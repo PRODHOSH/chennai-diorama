@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Namma Chennai · நம்ம சென்னை</title>
+  <meta name="description" content="A living, explorable miniature of central Chennai built from OpenStreetMap data — where every street can lead to a story." />
+  <meta name="theme-color" content="#1b2040" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hind+Madurai:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2040'/%3E%3Cg fill='none' stroke='%23f4ecdf' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M32 12c8 0 12 8 20 8M32 52c-8 0-12-8-20-8M12 32c0-8 8-12 8-20M52 32c0 8-8 12-8 20'/%3E%3C/g%3E%3Cg fill='%23c9a24a'%3E%3Ccircle cx='22' cy='22' r='3'/%3E%3Ccircle cx='42' cy='22' r='3'/%3E%3Ccircle cx='22' cy='42' r='3'/%3E%3Ccircle cx='42' cy='42' r='3'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <!-- ======= Loader ======= -->
+  <div id="loader" role="status" aria-live="polite">
+    <div class="loader-inner">
+      <canvas id="loader-kolam" width="220" height="220" aria-hidden="true"></canvas>
+      <h1 class="brand-ta">நம்ம சென்னை</h1>
+      <p class="brand-en">NAMMA CHENNAI</p>
+      <p class="loader-line" id="loader-text">Laying out the streets of Park Town…</p>
+      <div class="loader-bar"><span id="loader-progress"></span></div>
+    </div>
+  </div>
+
+  <!-- ======= 3D canvas ======= -->
+  <div id="stage" aria-label="Interactive 3D miniature of central Chennai"></div>
+  <div id="pins" aria-label="Story locations"></div>
+  <div id="hover-tip" role="tooltip" hidden></div>
+  <div id="fade" aria-hidden="true"></div>
+
+  <!-- ======= Top bar ======= -->
+  <header id="topbar">
+    <button class="brand" id="brand-btn" aria-label="Namma Chennai — reset view">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6c5 0 8 5 13 5M20 34c-5 0-8-5-13-5M6 20c0-5 5-8 5-13M34 20c0 5-5 8-5 13"/></g><g fill="var(--gold)"><circle cx="14" cy="14" r="2"/><circle cx="26" cy="14" r="2"/><circle cx="14" cy="26" r="2"/><circle cx="26" cy="26" r="2"/><circle cx="20" cy="20" r="2"/></g></svg>
+      <span><b class="ta">நம்ம சென்னை</b><i>Namma Chennai</i></span>
+    </button>
+
+    <div class="search" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input id="search-input" type="search" placeholder="Search places, streets, stories…" autocomplete="off" aria-label="Search places, streets and stories" aria-controls="search-results" aria-expanded="false" />
+      <kbd>/</kbd>
+      <ul id="search-results" role="listbox" hidden></ul>
+    </div>
+
+    <nav class="modes" aria-label="Festival mode">
+      <button data-mode="everyday" aria-pressed="true"><span class="ta">அன்றாடம்</span>Everyday</button>
+      <button data-mode="margazhi" aria-pressed="false"><span class="ta">மார்கழி</span>Margazhi</button>
+      <button data-mode="pongal" aria-pressed="false"><span class="ta">பொங்கல்</span>Pongal</button>
+      <button data-mode="deepavali" aria-pressed="false"><span class="ta">தீபாவளி</span>Deepavali</button>
+    </nav>
+
+    <div class="top-actions">
+      <button id="btn-studio" class="pill accent"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4c3 0 5 3 8 3M12 20c-3 0-5-3-8-3M4 12c0-3 3-5 3-8M20 12c0 3-3 5-3 8"/></g><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>Kolam Studio</button>
+      <button id="btn-menu" class="icon" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </header>
+
+  <!-- ======= Menu drawer ======= -->
+  <aside id="menu" hidden aria-label="Menu">
+    <div class="menu-head"><h2>Explore</h2><button class="icon close" data-close="menu" aria-label="Close menu">×</button></div>
+    <div class="menu-section">
+      <button class="menu-item" id="m-inside"><b>Step inside</b><span>Walk into the temple, a Deepavali puja room, a Pongal courtyard</span></button>
+      <button class="menu-item" id="m-discover"><b>Discover a tradition</b><span>Take me to a story I haven't seen</span></button>
+      <button class="menu-item" id="m-tours"><b>Guided journeys</b><span>Heritage walk · Household traditions · Kolam · Food trail</span></button>
+      <button class="menu-item" id="m-places"><b>All places &amp; stories</b><span>An index of every location on the map</span></button>
+      <button class="menu-item" id="m-atlas"><b>Beyond the map</b><span>Kanchipuram, Thanjavur, Mylapore — places too far to place here</span></button>
+      <button class="menu-item" id="m-timetravel"><b>Then &amp; Now</b><span>Historic photographs, side by side with today</span></button>
+      <button class="menu-item" id="m-words"><b>Tamil words &amp; verses</b><span>Thirukkural, Purananuru, Tiruppavai</span></button>
+      <button class="menu-item" id="m-contribute"><b>Share a memory</b><span>Add your photo, video or story (Cloudinary)</span></button>
+    </div>
+    <div class="menu-section">
+      <h3>Settings</h3>
+      <label class="toggle"><input type="checkbox" id="set-motion" /> <span>Reduce motion</span></label>
+      <label class="toggle"><input type="checkbox" id="set-tilt" checked /> <span>Miniature lens (tilt-shift)</span></label>
+      <label class="toggle"><input type="checkbox" id="set-traffic" checked /> <span>Traffic &amp; trains</span></label>
+      <label class="toggle"><input type="checkbox" id="set-fireworks" checked /> <span>Fireworks in Deepavali mode</span></label>
+      <label class="range">Fireworks intensity <input type="range" id="set-fw-level" min="0" max="3" step="1" value="2" /></label>
+      <label class="range">Graphics quality
+        <select id="set-quality"><option value="auto">Auto</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+      </label>
+      <button class="menu-item small" id="m-cloud"><b>Cloudinary settings</b><span id="cloud-status">Checking…</span></button>
+      <button class="menu-item small" id="m-about"><b>About, sources &amp; credits</b><span>Data, accuracy notes and licences</span></button>
+      <button class="menu-item small" id="m-help"><b>How to explore</b><span>Controls &amp; shortcuts</span></button>
+    </div>
+  </aside>
+
+  <!-- ======= Story panel ======= -->
+  <section id="story" hidden aria-labelledby="story-title" role="dialog" aria-modal="false">
+    <div class="story-scroll" id="story-scroll"></div>
+    <button class="icon close story-close" id="story-close" aria-label="Close story (Esc)">×</button>
+  </section>
+
+  <!-- ======= Generic modal ======= -->
+  <div id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card" id="modal-card"></div>
+  </div>
+
+  <!-- ======= Lightbox ======= -->
+  <div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Media viewer">
+    <button class="icon close" id="lb-close" aria-label="Close">×</button>
+    <button class="lb-nav prev" id="lb-prev" aria-label="Previous">‹</button>
+    <figure id="lb-figure"></figure>
+    <button class="lb-nav next" id="lb-next" aria-label="Next">›</button>
+  </div>
+
+  <!-- ======= Bottom controls ======= -->
+  <div id="bottombar">
+    <div class="left-controls">
+    <div class="cam-controls" role="group" aria-label="Camera">
+      <button class="icon" id="cam-in" aria-label="Zoom in">+</button>
+      <button class="icon" id="cam-out" aria-label="Zoom out">−</button>
+      <button class="icon" id="cam-rot" aria-label="Rotate view 45 degrees"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4v4h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="icon" id="cam-reset" aria-label="Reset view (R)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
+    </div>
+    <button class="pill inside-btn" id="btn-inside"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M3 21h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 21V11h6v10" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="13.6" cy="16" r="0.9" fill="currentColor"/></svg><span><b>Step inside</b><small class="ta">உள்ளே வாருங்கள்</small></span></button>
+    </div>
+    <div id="tour-bar" hidden>
+      <div class="tour-meta"><b id="tour-title"></b><span id="tour-step"></span></div>
+      <button class="icon" id="tour-prev" aria-label="Previous stop">‹</button>
+      <button class="icon" id="tour-play" aria-label="Pause journey">❚❚</button>
+      <button class="icon" id="tour-next" aria-label="Next stop">›</button>
+      <button class="icon" id="tour-stop" aria-label="End journey">×</button>
+    </div>
+    <div class="right-controls">
+      <button class="pill ghost" id="btn-fireworks" hidden>Light the sky</button>
+      <button class="pill ghost" id="btn-metro" aria-pressed="false" title="See the Chennai Metro tunnels beneath the city (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V7l4 6 4-6 4 6 4-6v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Metro</button>
+      <div class="sky-wrap">
+        <button class="icon" id="btn-sky" aria-label="Time of day and weather" aria-expanded="false" aria-controls="sky-panel"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 2.5v1.6M9 13.9v1.6M2.5 9h1.6M13.9 9h1.6M4.4 4.4l1.1 1.1M12.5 12.5l1.1 1.1M4.4 13.6l1.1-1.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 20h8a3 3 0 0 0 0-6 4.2 4.2 0 0 0-8 1.2A2.4 2.4 0 0 0 11 20z" fill="var(--indigo-2)" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
+        <div id="sky-panel" class="sky-panel" hidden role="dialog" aria-label="Time of day and weather">
+          <h4>Time of day <span class="ta">நேரம்</span></h4>
+          <div class="chips" id="sky-times"></div>
+          <h4>Weather <span class="ta">வானிலை</span></h4>
+          <div class="chips" id="sky-weather"></div>
+          <p class="sky-note">Festivals set their own time — Deepavali at night, Margazhi at dawn. Change it here any time.</p>
+        </div>
+      </div>
+      <button class="icon" id="btn-sound" aria-label="Turn on soundscape" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path class="wave" d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="mute" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      <input type="range" id="vol" min="0" max="1" step="0.05" value="0.6" aria-label="Soundscape volume" hidden />
+    </div>
+    <p class="attribution">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · stylised reconstruction</p>
+  </div>
+
+  <div id="compass" aria-hidden="true"><span>N</span></div>
+  <div class="metro-legend" id="metro-legend" hidden>
+    <b>Chennai Metro, under your feet</b>
+    <span><i style="background:#2a6fdb"></i>Blue Line · Line 1 — Airport ⇄ Wimco Nagar</span><br>
+    <span><i style="background:#2e9e4f"></i>Green Line · Line 2 — Central ⇄ St Thomas Mount</span>
+    <small>Tunnels, Central Metro &amp; High Court stations and entrances S3, S4, B5, A2, A3 from OpenStreetMap. Phase 2 lines (including the Red Line) are under construction elsewhere in the city and aren’t shown. Depths are illustrative.</small>
+  </div>
+  <div id="mode-caption" aria-live="polite"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ======= Step-inside interiors ======= -->
+  <section id="interior" hidden aria-label="Inside the house">
+    <div id="interior-stage"></div>
+    <div id="interior-hotspots"></div>
+    <header class="int-head" id="interior-title"></header>
+    <button class="pill accent int-close" id="interior-close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to the city</button>
+    <nav class="int-days" id="interior-days" hidden aria-label="Four days of Pongal"></nav>
+    <aside class="int-info" id="interior-info" aria-live="polite"></aside>
+    <div id="interior-toast"></div>
+  </section>
+
+  <!-- ======= Kolam Studio ======= -->
+  <section id="studio" hidden aria-label="Kolam Studio">
+    <header class="studio-head">
+      <div class="studio-title"><svg class="studio-logo" hidden viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6c5 0 8 5 13 5M20 34c-5 0-8-5-13-5M6 20c0-5 5-8 5-13M34 20c0 5-5 8-5 13"/></g><g fill="var(--gold)"><circle cx="14" cy="14" r="2"/><circle cx="26" cy="14" r="2"/><circle cx="14" cy="26" r="2"/><circle cx="26" cy="26" r="2"/><circle cx="20" cy="20" r="2"/></g></svg><div><span class="ta">கோலம்</span><h2>Kolam Studio</h2></div></div>
+      <div class="studio-tools" role="toolbar" aria-label="Drawing tools">
+        <button data-tool="sikku" aria-pressed="true" title="Sikku: click between dots to place mirrors — the line loops around the dots (S)"><svg viewBox="0 0 24 24"><path d="M6 12c0-4 4-6 6-3s6 1 6-3M6 12c0 4 4 6 6 3s6-1 6 3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Sikku</button>
+        <button data-tool="free" aria-pressed="false" title="Freehand curve (F)"><svg viewBox="0 0 24 24"><path d="M4 17c3-8 6 4 9-3s5-6 7-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Free</button>
+        <button data-tool="line" aria-pressed="false" title="Join dots with straight lines (L)"><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="1.6" fill="currentColor"/><circle cx="19" cy="5" r="1.6" fill="currentColor"/><path d="M5 19L19 5" stroke="currentColor" stroke-width="1.6"/></svg>Line</button>
+        <button data-tool="erase" aria-pressed="false" title="Erase a stroke (E)"><svg viewBox="0 0 24 24"><path d="M4 16l8-8 6 6-5 5H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Erase</button>
+        <span class="sep"></span>
+        <button id="k-undo" title="Undo (Ctrl+Z)" aria-label="Undo"><svg viewBox="0 0 24 24"><path d="M9 7H5V3M5 7a8 8 0 1 1-1 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <button id="k-redo" title="Redo (Ctrl+Shift+Z)" aria-label="Redo"><svg viewBox="0 0 24 24"><path d="M15 7h4V3M19 7a8 8 0 1 0 1 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <button id="k-clear" title="Clear canvas" aria-label="Clear canvas"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="studio-actions">
+        <button class="pill ghost" id="k-save">Save</button>
+        <div class="dropdown">
+          <button class="pill ghost" id="k-export" aria-haspopup="true" aria-expanded="false">Export</button>
+          <div class="dropdown-menu" id="k-export-menu" hidden>
+            <button data-export="png">PNG · 2048 px</button>
+            <button data-export="svg">SVG · vector</button>
+            <button data-export="json">Pattern file (.json)</button>
+          </div>
+        </div>
+        <button class="pill accent" id="k-place">Place on a doorstep →</button>
+        <button class="icon close" id="studio-close" aria-label="Close Kolam Studio">×</button>
+      </div>
+    </header>
+
+    <div class="studio-body">
+      <aside class="studio-left" aria-label="Pattern library">
+        <h3>Pattern book <span class="ta">கோல நூல்</span></h3>
+        <div class="preset-filter" role="tablist" id="preset-filter"></div>
+        <div class="preset-list" id="preset-list"></div>
+        <h3 class="mt">Your kolams <span class="ta">உங்கள் கோலங்கள்</span></h3>
+        <div class="preset-list saved" id="saved-list"><p class="empty">Designs you save appear here.</p></div>
+      </aside>
+
+      <main class="studio-canvas-wrap">
+        <div class="canvas-frame" id="k-frame">
+          <div class="threshold" aria-hidden="true"></div>
+          <canvas id="k-canvas" aria-label="Kolam drawing canvas"></canvas>
+          <div class="k-badge" id="k-badge" hidden></div>
+          <div class="k-hint" id="k-hint"></div>
+        </div>
+        <div class="playback" role="group" aria-label="Stroke playback">
+          <button class="icon" id="pb-restart" aria-label="Restart">⏮</button>
+          <button class="icon big" id="pb-play" aria-label="Play drawing">▶</button>
+          <button class="icon" id="pb-step" aria-label="Draw next stroke">⏭</button>
+          <input type="range" id="pb-progress" min="0" max="1000" value="1000" aria-label="Playback position" />
+          <label class="speed">Speed
+            <select id="pb-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+          </label>
+          <span id="pb-info"></span>
+        </div>
+      </main>
+
+      <aside class="studio-right" aria-label="Grid and style">
+        <h3 data-n="01">Dots <span class="ta">புள்ளி</span></h3>
+        <div class="grid-sizes" id="grid-sizes"></div>
+        <label class="row">Shape
+          <select id="g-shape"><option value="square">Square</option><option value="diamond">Diamond (1-3-5-3-1)</option></select>
+        </label>
+        <label class="row">Custom size <input type="number" id="g-custom" min="2" max="17" value="5" /></label>
+        <label class="toggle"><input type="checkbox" id="g-show" checked /> <span>Show dots</span></label>
+        <label class="toggle"><input type="checkbox" id="g-snap" checked /> <span>Snap freehand to grid</span></label>
+        <button class="gen" id="g-generate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18 9l-4.2 1.6L12 15l-1.8-4.4L6 9l4.2-1.4z M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" fill="currentColor"/></svg><span><b>Weave a one-line kolam</b><small>A new kambi pattern on this grid — one unbroken line</small></span></button>
+
+        <h3 class="mt" data-n="02">Symmetry <span class="ta">சமச்சீர்</span></h3>
+        <div class="sym" id="sym">
+          <button data-sym="none" aria-pressed="true">Off</button>
+          <button data-sym="h" aria-pressed="false">Mirror ↔</button>
+          <button data-sym="v" aria-pressed="false">Mirror ↕</button>
+          <button data-sym="hv" aria-pressed="false">Both</button>
+          <button data-sym="r4" aria-pressed="false">Rotate ×4</button>
+          <button data-sym="r8" aria-pressed="false">Rotate ×8</button>
+        </div>
+
+        <h3 class="mt" data-n="03">Colour <span class="ta">வண்ணம்</span></h3>
+        <div class="palettes" id="palettes"></div>
+        <label class="row">Line <input type="color" id="c-line" value="#f6f1e6" /></label>
+        <label class="row">Ground <input type="color" id="c-bg" value="#5a3a2c" /></label>
+        <label class="row">Thickness <input type="range" id="c-width" min="2" max="14" step="0.5" value="5" /></label>
+        <label class="toggle"><input type="checkbox" id="d-flowers" /> <span>Jasmine &amp; marigold at dots</span></label>
+        <label class="toggle"><input type="checkbox" id="d-diyas" /> <span>Agal vilakku (lamps) at corners</span></label>
+        <div class="about-pattern" id="about-pattern"></div>
+      </aside>
+    </div>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
