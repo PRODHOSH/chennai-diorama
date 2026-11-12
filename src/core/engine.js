@@ -230,9 +230,14 @@ export class Engine {
   updateShadowFrustum() {
     const t = this.controls.target;
     const dist = this.camera.position.distanceTo(t);
-    const half = THREE.MathUtils.clamp(dist * 0.62, 120, 900);
+    // depth precision: scale the near plane with distance so a 2 km overview doesn't
+    // z-fight (the flicker between ground, parks and roads that sit centimetres apart)
+    const near = THREE.MathUtils.clamp(dist * 0.02, 1, 60);
+    if (Math.abs(this.camera.near - near) / near > 0.15) { this.camera.near = near; this.camera.far = Math.max(9000, dist * 8); this.camera.updateProjectionMatrix(); }
+    // shadow frustum in coarse steps — resizing it every frame makes shadows shimmer
+    const half = THREE.MathUtils.clamp(Math.ceil((dist * 0.62) / 150) * 150, 150, 900);
     const cam = this.sun.shadow.camera;
-    if (Math.abs(cam.right - half) > 8) {
+    if (cam.right !== half) {
       cam.left = -half; cam.right = half; cam.top = half; cam.bottom = -half;
       cam.near = 10; cam.far = 3000;
       cam.updateProjectionMatrix();
