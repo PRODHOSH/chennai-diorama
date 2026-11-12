@@ -45,7 +45,11 @@ export const PRESETS = {
   sepia: 'c_fill,g_auto,w_1400,h_875,e_sepia:40,f_auto,q_auto',
   kolamDecal: 'c_pad,w_512,h_512,b_transparent,f_png',
 };
-const WIDTH = { pin: 96, thumb: 360, card: 640, hero: 1040, full: 1920, compare: 1400, mobile: 720, sepia: 1400 };
+// Wikimedia serves thumbnails in fixed steps; asking for these exact widths avoids a resize
+// on their side and keeps phones from downloading multi-megabyte originals.
+const WIDTH = { pin: 120, thumb: 330, card: 960, hero: 1280, full: 1920, compare: 1280, mobile: 960, sepia: 1280 };
+const STEPS = [120, 250, 330, 500, 960, 1280, 1920];
+const step = (w) => STEPS.find((s) => s >= w) || 1920;
 
 const commonsOriginal = (file) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}`;
 const commonsThumb = (file, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${w}`;
@@ -62,22 +66,46 @@ export function img(src, preset = 'card') {
     return `https://res.cloudinary.com/${cfg.cloud}/image/upload/${p}/${src.publicId}`;
   }
   const remote = src.commons ? commonsOriginal(src.commons) : src;
-  if (cfg.cloud) return `https://res.cloudinary.com/${cfg.cloud}/image/fetch/${p}/${encodeURIComponent(remote)}`;
-  return src.commons ? commonsThumb(src.commons, WIDTH[preset] || 1280) : remote;
+  if (cfg.cloud && fetchOk) return `https://res.cloudinary.com/${cfg.cloud}/image/fetch/${p}/${encodeURIComponent(remote)}`;
+  return src.commons ? commonsThumb(src.commons, step(WIDTH[small ? 'mobile' : preset] || 1280)) : remote;
+}
+
+/**
+ * Fetch delivery can be switched off per account ("Images of type fetch are restricted",
+ * the default on many new accounts). Probe it once at startup; while it's blocked, archive
+ * photos load straight from Wikimedia so nothing breaks, and uploads keep using Cloudinary.
+ */
+let fetchOk = false;
+export let fetchStatus = 'unchecked';
+export function probeFetch(timeout = 6000) {
+  if (!cfg.cloud) { fetchOk = false; fetchStatus = 'no-cloud'; return Promise.resolve(false); }
+  const key = 'nc.cld.fetchOk.' + cfg.cloud;
+  const cached = sessionStorage.getItem(key);
+  if (cached != null) { fetchOk = cached === '1'; fetchStatus = fetchOk ? 'ok' : 'restricted'; return Promise.resolve(fetchOk); }
+  const probe = `https://res.cloudinary.com/${cfg.cloud}/image/fetch/w_8,f_auto/${encodeURIComponent(commonsOriginal('Chennai central.jpg'))}`;
+  return new Promise((resolve) => {
+    const im = new Image();
+    const done = (ok) => { fetchOk = ok; fetchStatus = ok ? 'ok' : 'restricted'; try { sessionStorage.setItem(key, ok ? '1' : '0'); } catch {} resolve(ok); };
+    im.onload = () => done(true);
+    im.onerror = () => done(false);
+    setTimeout(() => done(false), timeout);
+    im.src = probe;
+  });
 }
 
 /** responsive srcset for <img> */
 export function srcset(src, preset = 'card') {
   if (!cfg.cloud && !src.commons) return '';
+  if (!src.publicId && !src.commons && !(cfg.cloud && fetchOk)) return '';
   const base = PRESETS[preset];
   return [1, 2].map((d) => {
-    if (cfg.cloud) {
+    if (cfg.cloud && (src.publicId || fetchOk)) {
       const p = base.replace(/w_(\d+)/, (_, w) => 'w_' + w * d).replace(/h_(\d+)/, (_, h) => 'h_' + h * d);
       const remote = src.publicId ? null : src.commons ? commonsOriginal(src.commons) : src;
       const url = src.publicId ? `https://res.cloudinary.com/${cfg.cloud}/image/upload/${p}/${src.publicId}` : `https://res.cloudinary.com/${cfg.cloud}/image/fetch/${p}/${encodeURIComponent(remote)}`;
       return `${url} ${d}x`;
     }
-    return `${commonsThumb(src.commons, (WIDTH[preset] || 1280) * d)} ${d}x`;
+    return `${commonsThumb(src.commons, step((WIDTH[preset] || 1280) * d))} ${d}x`;
   }).join(', ');
 }
 
@@ -156,9 +184,11 @@ export function loadVideoPlayer() {
 export async function testConnection() {
   if (!cfg.cloud) return 'Not configured — archive images load from Wikimedia’s thumbnailer.';
   try {
-    const probe = img({ commons: 'Chennai central.jpg' }, 'pin');
+    const probe = `https://res.cloudinary.com/${cfg.cloud}/image/fetch/${PRESETS.pin}/${encodeURIComponent(commonsOriginal('Chennai central.jpg'))}`;
     const r = await fetch(probe, { method: 'GET' });
-    if (!r.ok) return `Cloud “${cfg.cloud}” reachable, but fetch delivery returned ${r.status}. Allow “Fetched URL” delivery for commons.wikimedia.org in Security settings.`;
+    if (!r.ok) return `Cloud “${cfg.cloud}” is connected (uploads are unaffected), but fetch delivery is restricted on this account (HTTP ${r.status}), so archive photos load directly from Wikimedia. To route them through Cloudinary: Settings → Security → Restricted image types → untick “Fetched URL”.`;
+    try { sessionStorage.removeItem('nc.cld.fetchOk.' + cfg.cloud); } catch {}
+    await probeFetch();
     return `Connected to “${cfg.cloud}” — media delivered via Cloudinary (f_auto, q_auto, g_auto).${cfg.canUpload ? ' Uploads enabled.' : ' Add an unsigned upload preset to enable uploads.'}`;
   } catch {
     return `Couldn’t reach Cloudinary for “${cfg.cloud}”.`;

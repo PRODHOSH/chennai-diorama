@@ -46,7 +46,9 @@ The app works without Cloudinary. It just falls back to Wikimedia's own image th
 1. **Get your cloud name.** It's at the top left of the Cloudinary dashboard.
 2. **Create an unsigned upload preset.** Go to Settings → Upload → Upload presets → Add upload preset, set Signing mode to **Unsigned** and save. Note the preset name. While you're there you can also turn on auto-tagging or moderation for the preset.
 3. **Allow the resource list.** Settings → Security → untick "Resource list" under restricted media types. This is what lets the app show *everyone's* uploads, not just the ones made in your own browser.
-4. **Keep fetched URLs allowed.** Same Security page. If you want to be strict, limit fetch to `commons.wikimedia.org`.
+4. **Allow fetched URLs.** Same Security page: under *Restricted image types*, make sure **Fetched URL** is *unticked*. New accounts often ship with it ticked, and then every archive photo comes back with `401 – Images of type fetch are restricted`. If you want to be strict, limit fetch to `commons.wikimedia.org` and `upload.wikimedia.org`.
+
+   The app checks this when it starts. If fetch is blocked, it loads photos straight from Wikimedia so nothing breaks, and Menu → Cloudinary settings tells you what to change.
 5. **Add the values to the project:**
 
    ```bash
@@ -137,6 +139,15 @@ Beyond that, the Studio has:
 - **Playback:** step-by-step, with play, pause, step, speed and scrubbing.
 - **Export:** PNG, SVG and the raw pattern file.
 - **Place on a doorstep:** puts your kolam on a doorstep in the city.
+
+### The film
+Press **Watch the film** (bottom left, or on the welcome card) for a two-minute guided showreel. It runs in letterbox with Tamil and English subtitles and covers:
+- Central, Ripon Building and Victoria Hall, the metro underneath, the temple, the George Town streets and the Fort
+- Margazhi, Pongal, a monsoon storm and Deepavali fireworks
+- a walk into the temple and a Deepavali home
+- the Kolam Studio drawing a single-line kolam
+
+You can skip to the next shot or leave at any time, and the city goes back to how you left it.
 
 ### And the rest
 - Guided journeys

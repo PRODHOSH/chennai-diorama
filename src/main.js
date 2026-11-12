@@ -13,6 +13,7 @@ import { Fireworks } from './world/fireworks.js';
 import { buildMetro } from './world/metro.js';
 import { Weather } from './world/weather.js';
 import { InteriorViewer } from './interior/interior.js';
+import { Film } from './ui/film.js';
 import { buildStreetLife, buildNames } from './world/streetlife.js';
 import { templeComplex, tankPavilion } from './world/temple.js';
 import { generateInfill } from './world/infill.js';
@@ -25,7 +26,7 @@ import { KolamStudio, escapeHtml } from './kolam/studio.js';
 import { Kolam, renderKolam } from './kolam/engine.js';
 import { presetKolam } from './kolam/presets.js';
 import { Soundscape } from './audio/soundscape.js';
-import { cfg, listTagged, upload, testConnection } from './media/cloudinary.js';
+import { cfg, listTagged, upload, testConnection, probeFetch } from './media/cloudinary.js';
 
 const $ = (s) => document.querySelector(s);
 document.body.classList.toggle('reduce-motion', state.reduceMotion);
@@ -50,6 +51,7 @@ boot().catch((err) => {
 });
 
 async function boot() {
+  const fetchProbe = probeFetch(); // runs while the city loads
   setLoad('Fetching OpenStreetMap streets of Park Town…', 0.05);
   const city = await loadCity((p) => setLoad('Fetching OpenStreetMap streets of Park Town…', 0.05 + p * 0.25));
   await frame();
@@ -529,6 +531,11 @@ async function boot() {
   const openInsidePicker = () => { menu(false); insideModal(modal, (id) => interior.open(id)); };
   $('#m-inside').onclick = openInsidePicker;
   $('#btn-inside').onclick = openInsidePicker;
+  const film = new Film({ engine, env, weather, metro, interior, studio, places, setMode, fireworks, story, sound, houses });
+  const playFilm = () => { menu(false); modal.close(); if (tour.active) tour.stop(); film.play(); };
+  $('#btn-film').onclick = playFilm;
+  $('#m-film').onclick = playFilm;
+  window.__playFilm = playFilm;
   $('#m-tours').onclick = () => { menu(false); toursModal(modal, (t) => tour.start(t)); };
   $('#m-places').onclick = () => { menu(false); placesIndex(modal, places, (p) => openPlace(p)); };
   $('#m-atlas').onclick = () => { menu(false); atlasModal(modal); };
@@ -573,7 +580,7 @@ async function boot() {
 
   // ---- keyboard
   window.addEventListener('keydown', (e) => {
-    if (studio.isOpen() || document.body.classList.contains('in-interior') || e.target.matches('input, textarea, select') || modal.isOpen() || !$('#lightbox').hidden) return;
+    if (studio.isOpen() || document.body.classList.contains('in-interior') || document.body.classList.contains('filming') || e.target.matches('input, textarea, select') || modal.isOpen() || !$('#lightbox').hidden) return;
     const k = e.key;
     if (k === '/') { e.preventDefault(); $('#search-input').focus(); }
     else if (k === 'Escape') { if (!menuEl.hidden) menu(false); else if (story.isOpen()) story.close(); else if (tour.active) tour.stop(); }
@@ -592,8 +599,9 @@ async function boot() {
   on('mode', () => {});
 
   // ---------------------------------------------------------------- go!
+  await fetchProbe;
   setLoad('Opening the doors…', 1);
-  window.__nc = { engine, city, buildings, env, places, houses, doorsteps, studio, fireworks, openPlace, setMode, story, interior, metro, weather, names };
+  window.__nc = { engine, city, buildings, env, places, houses, doorsteps, studio, fireworks, openPlace, setMode, story, interior, metro, weather, names, film };
   engine.start();
   // cinematic establishing shot
   engine.flyTo({ target: [-10, 0, -30], dist: 2400, polar: 0.62, azimuth: -0.9, duration: 0.001 });

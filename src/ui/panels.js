@@ -238,11 +238,12 @@ export function onboardingModal(modal, { onDone }) {
       <h2 id="modal-title">${s.title}</h2>
       ${s.art === 'controls' ? `<div class="controls-grid"><div><b>Drag</b>to move around the city</div><div><b>Right-drag / two fingers</b>to rotate and tilt</div><div><b>Scroll / pinch</b>to zoom in on any street</div><div><b>Click a pin</b>to open its story</div><div><b>Hover a building</b>to see its real name from OSM</div><div><b>Keys</b>/ search · R reset · arrows pan · +/− zoom</div></div>` : `<p style="color:var(--ink-2);line-height:1.6;max-width:520px;margin:8px auto">${s.text}</p>`}
       <div class="ob-dots">${steps.map((_, k) => `<i class="${k === i ? 'on' : ''}"></i>`).join('')}</div>
-      <div class="story-actions" style="justify-content:center"><button class="btn light" id="ob-skip">Skip</button><button class="btn terracotta" id="ob-next" autofocus>${i < steps.length - 1 ? 'Next' : 'Start exploring'}</button></div></div>`, { onClose: () => onDone?.() });
+      <div class="story-actions" style="justify-content:center">${i === 0 ? '<button class="btn terracotta" id="ob-film">▶ Watch the 2-minute film</button>' : ''}<button class="btn light" id="ob-skip">Skip</button><button class="btn terracotta" id="ob-next" autofocus>${i < steps.length - 1 ? 'Next' : 'Start exploring'}</button></div></div>`, { onClose: () => onDone?.() });
     const cv = card.querySelector('canvas');
     if (cv) { const k = presetKolam('sikku-5-diamond', { bg: '#faf5ec', line: '#6e1f2a' }); let p = 0; const loop = () => { if (!cv.isConnected) return; p = Math.min(1, p + 0.006); renderKolam(cv.getContext('2d'), k, { size: 360, progress: p }); if (p < 1) requestAnimationFrame(loop); }; loop(); }
     card.querySelector('#ob-next').onclick = () => { if (i < steps.length - 1) { i++; modal.onClose = null; render(); } else modal.close(); };
     card.querySelector('#ob-skip').onclick = () => modal.close();
+    card.querySelector('#ob-film')?.addEventListener('click', () => { modal.close(); window.__playFilm?.(); });
   };
   render();
 }

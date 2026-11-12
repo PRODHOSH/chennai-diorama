@@ -50,7 +50,11 @@ export class StoryPanel {
       ${stories.length > 1 ? `<div class="story-tabs" role="tablist">${stories.map((s, i) => `<button role="tab" aria-selected="${i === storyIdx}" data-i="${i}">${escapeHtml(s.title)}</button>`).join('')}</div>` : ''}
       <article class="story-body" id="story-body"></article>`;
     const heroImg = this.scroll.querySelector('.story-hero img');
-    if (heroImg) { heroImg.onload = () => heroImg.classList.add('loaded'); if (heroImg.complete) heroImg.classList.add('loaded'); heroImg.onerror = () => heroImg.closest('figure').replaceChildren(this.artCanvas(place)); }
+    if (heroImg) { heroImg.onload = () => heroImg.classList.add('loaded'); if (heroImg.complete) heroImg.classList.add('loaded'); heroImg.onerror = () => {
+      // Wikimedia occasionally rate-limits a burst of thumbnails: retry once, smaller, before falling back
+      if (!heroImg.dataset.retried && heroSrc?.commons) { heroImg.dataset.retried = '1'; heroImg.removeAttribute('srcset'); setTimeout(() => { heroImg.src = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(heroSrc.commons)}?width=960`; }, 600); return; }
+      heroImg.closest('figure').replaceChildren(this.artCanvas(place));
+    }; }
     else this.drawArt(this.scroll.querySelector('.art'), place);
     this.scroll.querySelectorAll('.story-tabs button').forEach((b) => b.onclick = () => this.showStory(+b.dataset.i));
     this.scroll.querySelector('#story-inside')?.addEventListener('click', () => this.onAction('inside:' + place.inside));

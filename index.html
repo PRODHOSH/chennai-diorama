@@ -61,6 +61,7 @@
   <aside id="menu" hidden aria-label="Menu">
     <div class="menu-head"><h2>Explore</h2><button class="icon close" data-close="menu" aria-label="Close menu">×</button></div>
     <div class="menu-section">
+      <button class="menu-item" id="m-film"><b>Watch the film</b><span>A two-minute guided showreel of everything here</span></button>
       <button class="menu-item" id="m-inside"><b>Step inside</b><span>Walk into the temple, a Deepavali puja room, a Pongal courtyard</span></button>
       <button class="menu-item" id="m-discover"><b>Discover a tradition</b><span>Take me to a story I haven't seen</span></button>
       <button class="menu-item" id="m-tours"><b>Guided journeys</b><span>Heritage walk · Household traditions · Kolam · Food trail</span></button>
@@ -114,6 +115,7 @@
       <button class="icon" id="cam-rot" aria-label="Rotate view 45 degrees"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4v4h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button class="icon" id="cam-reset" aria-label="Reset view (R)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
     </div>
+    <button class="pill film-btn" id="btn-film"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 8.6v6.8l5.6-3.4z" fill="currentColor"/></svg><span><b>Watch the film</b><small>2 min · everything in one go</small></span></button>
     <button class="pill inside-btn" id="btn-inside"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M3 21h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 21V11h6v10" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="13.6" cy="16" r="0.9" fill="currentColor"/></svg><span><b>Step inside</b><small class="ta">உள்ளே வாருங்கள்</small></span></button>
     </div>
     <div id="tour-bar" hidden>
@@ -151,6 +153,20 @@
   </div>
   <div id="mode-caption" aria-live="polite"></div>
   <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ======= The film ======= -->
+  <section id="film" hidden tabindex="-1" aria-label="Namma Chennai — the film">
+    <div class="film-bar top"></div><div class="film-bar bottom"></div>
+    <div id="film-title" aria-hidden="true"><span class="ta">நம்ம சென்னை</span><b>NAMMA CHENNAI</b><small>A living miniature of central Chennai — its streets, its temples, its festivals</small></div>
+    <div id="film-caption" aria-live="polite"></div>
+    <div id="film-end"><span class="ta">யாதும் ஊரே யாவரும் கேளிர்</span><i>“Every town is our town; everyone is our kin.” — Purananuru 192</i><b>Now explore it yourself.</b></div>
+    <div class="film-ui">
+      <span id="film-chapter"></span>
+      <div id="film-progress"><span></span></div>
+      <button id="film-next">Next shot ›</button>
+      <button id="film-exit">Exit film ✕</button>
+    </div>
+  </section>
 
   <!-- ======= Step-inside interiors ======= -->
   <section id="interior" hidden aria-label="Inside the house">
