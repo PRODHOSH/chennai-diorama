@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5173",
-    "build": "vite build",
+    "build": "node scripts/build-llms.mjs && vite build",
+    "llms": "node scripts/build-llms.mjs",
     "preview": "vite preview --port 4173",
     "screenshots": "node scripts/screenshots.mjs"
   },
