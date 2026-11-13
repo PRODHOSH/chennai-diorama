@@ -1,6 +1,8 @@
 import { Kolam, renderKolam, kolamToSVG, symmetricEdges, symmetricStrokes, simplify, generateSikku } from './engine.js';
 import { PRESETS, CATEGORIES, PALETTES, presetKolam } from './presets.js';
 import { toast, state } from '../core/state.js';
+import { cfg, upload } from '../media/cloudinary.js';
+import { postcardUrl, postcardThumb, GREETINGS } from '../media/postcard.js';
 
 const $ = (s) => document.querySelector(s);
 
@@ -96,6 +98,7 @@ export class KolamStudio {
     exBtn.onclick = () => { const open = exMenu.hidden; exMenu.hidden = !open; exBtn.setAttribute('aria-expanded', String(open)); };
     exMenu.querySelectorAll('[data-export]').forEach((b) => b.onclick = () => { exMenu.hidden = true; this.export(b.dataset.export); });
     $('#k-place').onclick = () => this.placeFlow();
+    $('#k-postcard').onclick = () => this.postcardFlow();
     // presets
     const pf = $('#preset-filter');
     for (const c of CATEGORIES) {
@@ -410,6 +413,60 @@ export class KolamStudio {
     } else {
       download(new Blob([JSON.stringify(this.kolam.toJSON(), null, 1)], { type: 'application/json' }), name + '.json');
     }
+  }
+
+  /** Upload the kolam once; Cloudinary composes the postcard from transformations on its URL. */
+  postcardFlow() {
+    const modal = document.getElementById('modal');
+    const card = document.getElementById('modal-card');
+    card.className = 'modal-card';
+    const preview = this.thumb(360).toDataURL('image/png');
+    card.innerHTML = `<button class="icon close" aria-label="Close">×</button>
+      <h2 id="modal-title">Send it as a postcard</h2>
+      <p class="sub">Your kolam goes to Cloudinary, which lays out the card — Tamil and English greeting, your name, a Chennai postmark — and gives you a link to share.</p>
+      ${cfg.canUpload ? '' : '<p class="note warn">Postcards need Cloudinary (a cloud name and an unsigned upload preset). Open Menu → Cloudinary settings.</p>'}
+      <div class="pc-form">
+        <img src="${preview}" alt="Your kolam" class="pc-kolam">
+        <div class="form">
+          <label>Greeting<select id="pc-greet">${Object.entries(GREETINGS).map(([k, g]) => `<option value="${k}">${g.ta} — ${escapeHtml(g.en)}</option>`).join('')}</select></label>
+          <label>Your name (optional)<input type="text" id="pc-from" maxlength="32" placeholder="e.g. Meena, Mylapore"></label>
+          <div class="story-actions"><button class="btn terracotta" id="pc-make" ${cfg.canUpload ? '' : 'disabled'}>Make the postcard</button></div>
+          <p class="note" id="pc-status" hidden></p>
+        </div>
+      </div>
+      <div id="pc-result" hidden></div>`;
+    modal.hidden = false;
+    card.querySelector('.close').onclick = () => { modal.hidden = true; };
+    const greet = card.querySelector('#pc-greet');
+    greet.value = state.mode in GREETINGS ? state.mode : 'everyday';
+    card.querySelector('#pc-make').onclick = async () => {
+      const st = card.querySelector('#pc-status'); st.hidden = false; st.textContent = 'Uploading your kolam to Cloudinary…';
+      const btn = card.querySelector('#pc-make'); btn.disabled = true;
+      try {
+        const blob = await new Promise((r) => { const cv = document.createElement('canvas'); cv.width = cv.height = 1024; renderKolam(cv.getContext('2d'), this.kolam, { size: 1024, transparent: true }); cv.toBlob(r, 'image/png'); });
+        const from = card.querySelector('#pc-from').value.trim();
+        const res = await upload(blob, { tags: ['kolam', 'postcard'], folder: cfg.folder + '/postcards', context: { caption: 'Kolam postcard', by: from, greeting: greet.value, pattern: this.kolam.meta?.name || 'original' } });
+        const url = postcardUrl(res.public_id, { greeting: greet.value, from, bg: this.kolam.style.bg, fg: '#f4ecdf' });
+        st.textContent = 'Cloudinary is composing your card…';
+        await new Promise((ok, bad) => { const im = new Image(); im.onload = ok; im.onerror = () => bad(new Error('Cloudinary could not render the card.')); im.src = postcardThumb(url); });
+        st.hidden = true;
+        const out = card.querySelector('#pc-result'); out.hidden = false;
+        out.innerHTML = `<img class="pc-card" src="${postcardThumb(url)}" alt="Your Namma Chennai postcard">
+          <div class="story-actions">
+            <button class="btn terracotta" id="pc-share">Share</button>
+            <a class="btn light" href="https://wa.me/?text=${encodeURIComponent('A kolam from Namma Chennai ' + url)}" target="_blank" rel="noopener">WhatsApp</a>
+            <button class="btn light" id="pc-copy">Copy link</button>
+            <a class="btn light" href="${url.replace('/f_jpg,q_auto/', '/f_jpg,q_auto,fl_attachment:namma-chennai-postcard/')}">Download</a>
+          </div>
+          <p class="credit">Composed by Cloudinary from one upload: c_pad, five text layers in Hind Madurai &amp; Playfair Display, a rotated postmark and a border — no image editing on our side.</p>`;
+        out.querySelector('#pc-copy').onclick = async () => { try { await navigator.clipboard.writeText(url); toast('Postcard link copied.'); } catch { prompt('Copy this link', url); } };
+        out.querySelector('#pc-share').onclick = async () => {
+          if (navigator.share) { try { await navigator.share({ title: 'Greetings from Namma Chennai', text: 'A kolam I drew in Namma Chennai', url }); } catch {} }
+          else { try { await navigator.clipboard.writeText(url); toast('Link copied — paste it anywhere.'); } catch {} }
+        };
+        try { const list = JSON.parse(localStorage.getItem('nc.postcards') || '[]'); list.unshift({ url, at: Date.now() }); localStorage.setItem('nc.postcards', JSON.stringify(list.slice(0, 20))); } catch {}
+      } catch (e) { st.textContent = e.message; btn.disabled = false; }
+    };
   }
 
   placeFlow() {

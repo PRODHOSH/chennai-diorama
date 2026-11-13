@@ -114,6 +114,7 @@ export class StoryPanel {
     else if (b.recon) el.innerHTML = `<p class="note"><b>About the 3D model.</b> ${escapeHtml(b.recon)}</p>`;
     else if (b.quote) el.innerHTML = `<blockquote><span class="ta">${escapeHtml(b.quote)}</span>${escapeHtml(b.en || '')}</blockquote>`;
     else if (b.facts) el.innerHTML = `<dl class="facts">${b.facts.map(([k, v]) => `<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl>`;
+    else if (b.chips) el.innerHTML = `<p style="margin:14px 0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">${escapeHtml(b.label || '')}</p><div class="chip-row">${b.chips.map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>`;
     else if (b.steps) el.innerHTML = `<ol class="step-list">${b.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`;
     else if (b.gallery) {
       const items = b.gallery.map((k) => (typeof k === 'string' ? MEDIA[k] : k)).filter(Boolean);

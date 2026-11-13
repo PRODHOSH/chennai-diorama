@@ -26,7 +26,7 @@ import { KolamStudio, escapeHtml } from './kolam/studio.js';
 import { Kolam, renderKolam } from './kolam/engine.js';
 import { presetKolam } from './kolam/presets.js';
 import { Soundscape } from './audio/soundscape.js';
-import { cfg, listTagged, upload, testConnection, probeFetch } from './media/cloudinary.js';
+import { cfg, listTagged, upload, testConnection, probeFetch, aiTagsOf, festivalFromTags } from './media/cloudinary.js';
 
 const $ = (s) => document.querySelector(s);
 document.body.classList.toggle('reduce-motion', state.reduceMotion);
@@ -386,7 +386,7 @@ async function boot() {
     const pos = [host._focus[0] + Math.cos(a) * r, 8, host._focus[1] + Math.sin(a) * r];
     const place = { id: 'c-' + c.publicId, cat: 'community', kind: 'community', name: c.title || 'A shared memory', sub: `Shared${c.by ? ' by ' + c.by : ''} · near ${host.name}`, _focus: [pos[0], pos[2]], cam: { dist: 120, polar: 0.9 },
       heroSrc: c.type === 'image' ? { publicId: c.publicId } : null,
-      stories: [{ id: 'c', title: c.title || 'A memory', body: [c.story ? { lede: c.story } : { p: 'A memory shared by a visitor.' }, { gallery: [toMedia(c)] }, c.festival ? { note: `Festival: ${c.festival}` } : { p: '' }, { action: 'contribute', label: 'Share your own memory' }] }] };
+      stories: [{ id: 'c', title: c.title || 'A memory', body: [c.story ? { lede: c.story } : { p: 'A memory shared by a visitor.' }, { gallery: [toMedia(c)] }, c.aiTags?.length ? { chips: c.aiTags, label: 'Tagged by Cloudinary AI' } : { p: '' }, c.festival ? { note: `Festival: ${c.festival}` } : { p: '' }, { action: 'contribute', label: 'Share your own memory' }] }] };
     communityPins.set(c.publicId, place);
     pins.add(place, pos);
   }
@@ -414,7 +414,8 @@ async function boot() {
         continue;
       }
       if (ctx.place) {
-        const c = { publicId: it.public_id + (it.format && it.resource_type === 'video' ? '' : ''), type: it.resource_type, title: ctx.caption, story: ctx.story, by: ctx.by, place: ctx.place, festival: ctx.festival };
+        const aiTags = aiTagsOf(it);
+        const c = { publicId: it.public_id, type: it.resource_type, title: ctx.caption, story: ctx.story, by: ctx.by, place: ctx.place, festival: ctx.festival || festivalFromTags(aiTags), aiTags };
         if (!contributions.some((x) => x.publicId === c.publicId)) { contributions.push(c); addCommunityPin(c); }
       }
     }

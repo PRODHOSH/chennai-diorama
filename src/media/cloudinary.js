@@ -194,3 +194,28 @@ export async function testConnection() {
     return `Couldn’t reach Cloudinary for “${cfg.cloud}”.`;
   }
 }
+
+/**
+ * AI AUTO-TAGGING
+ * When the upload preset has an auto-tagging add-on switched on (Google Automatic Video/Image
+ * Tagging or Amazon Rekognition, set under the preset's "Media analysis and AI" options),
+ * Cloudinary returns AI tags with every upload, and the same tags come back in the resource
+ * list. We separate them from our own tags, show them, and use them to file a memory under a
+ * festival when the visitor didn't choose one.
+ */
+const OWN_TAG = /^(namma-chennai|kolam|postcard|place-|slot-|heritage|home|festival|food|craft|music|temple|public|community|deepavali|pongal|margazhi|karthigai|other)/;
+export function aiTagsOf(res) {
+  const fromInfo = Object.values(res?.info?.categorization || {}).flatMap((c) => (c.data || []).filter((d) => (d.confidence ?? 1) >= 0.6).map((d) => d.tag));
+  const fromTags = (res?.tags || []).filter((t) => !OWN_TAG.test(t));
+  return [...new Set([...fromInfo, ...fromTags].map((t) => String(t).toLowerCase()))].slice(0, 12);
+}
+const FESTIVAL_HINTS = [
+  ['deepavali', /firework|diya|oil lamp|candle|lantern|sparkler|pyrotechnic|flame|fire/],
+  ['pongal', /cow|cattle|ox|bull|sugarcane|clay pot|pot|harvest|rice|pongal/],
+  ['margazhi', /rangoli|kolam|chalk|pattern|floor/],
+  ['karthigai', /lamp|light/],
+];
+export function festivalFromTags(tags) {
+  const t = tags.join(' ');
+  return FESTIVAL_HINTS.find(([, re]) => re.test(t))?.[0] || '';
+}

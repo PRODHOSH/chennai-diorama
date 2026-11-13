@@ -49,7 +49,8 @@ The app works without Cloudinary. It just falls back to Wikimedia's own image th
 4. **Allow fetched URLs.** Same Security page: under *Restricted image types*, make sure **Fetched URL** is *unticked*. New accounts often ship with it ticked, and then every archive photo comes back with `401 – Images of type fetch are restricted`. If you want to be strict, limit fetch to `commons.wikimedia.org` and `upload.wikimedia.org`.
 
    The app checks this when it starts. If fetch is blocked, it loads photos straight from Wikimedia so nothing breaks, and Menu → Cloudinary settings tells you what to change.
-5. **Add the values to the project:**
+5. **Turn on AI auto-tagging (optional, recommended).** Open your upload preset → *Media analysis and AI* → enable **Google Automatic Image Tagging** or **Amazon Rekognition Auto Tagging**, with a confidence threshold around 0.6. You first need to register the add-on (Settings → Add-ons); both have a free tier. Unsigned uploads can't ask for tagging themselves, so it has to be switched on in the preset.
+6. **Add the values to the project:**
 
    ```bash
    cp .env.example .env.local
@@ -68,6 +69,15 @@ You can also paste the two values into the app itself, under Menu → Cloudinary
 - **Everyone sees everyone's uploads.** On load the app reads `/image/list/namma-chennai.json` and `/video/list/namma-chennai.json` and drops a pin for each memory next to the place it belongs to.
 - **Shared kolams travel through it too.** When you place a kolam you can share it. It uploads as a PNG with the pattern data in its metadata, so other visitors see your kolam drawn on a doorstep in their city.
 - **Videos** use Cloudinary's video delivery with automatic format and quality, and a generated poster frame.
+- **AI auto-tagging.** If the preset has auto-tagging on, every uploaded memory comes back with tags such as *oil lamp*, *cattle* or *pattern*. The app shows them on the memory ("Tagged by Cloudinary AI"). If the visitor didn't choose a festival, it uses the tags to file the memory under one: lamps and fireworks go to Deepavali, cattle, sugarcane and clay pots to Pongal, and floor patterns to Margazhi. Tags also come back through the resource list, so everyone else's memories get sorted the same way.
+- **Kolam postcards.** In the Kolam Studio, *Postcard* uploads your kolam once as a transparent PNG. Everything else on the card is built from Cloudinary transformations on that one image's URL:
+  - `c_pad` to make the 1800×1100 card in the kolam's own ground colour
+  - text layers in **Hind Madurai**, which renders Tamil correctly, and **Playfair Display**, with "Greetings from Namma Chennai", நம்ம சென்னை, a festival greeting, your name and யாதும் ஊரே யாவரும் கேளிர்
+  - a postmark for Chennai 600 003, rotated with `a_-14`
+  - a gold border (`bo_16px`)
+
+  You get one permanent URL to share on WhatsApp, copy or download. See `src/media/postcard.js`.
+- **The link preview is Cloudinary too.** The Open Graph image in `index.html` is a render of the 3D city uploaded once to the account. Cloudinary crops it to 1200×630, fades the left side to indigo with `e_gradient_fade`, and sets the title in Tamil and English with text layers. A copy is kept at `public/og.jpg`.
 
 Memories only attach to public places like the station, the temple or a market, never to a house. The upload form says so, and asks people not to include addresses or faces of people who haven't agreed.
 
@@ -139,6 +149,7 @@ Beyond that, the Studio has:
 - **Playback:** step-by-step, with play, pause, step, speed and scrubbing.
 - **Export:** PNG, SVG and the raw pattern file.
 - **Place on a doorstep:** puts your kolam on a doorstep in the city.
+- **Postcard:** turns your kolam into a shareable Cloudinary postcard with a Tamil greeting for the current festival.
 
 ### The film
 Press **Watch the film** (bottom left, or on the welcome card) for a two-minute guided showreel. It runs in letterbox with Tamil and English subtitles and covers:

@@ -676,3 +676,9 @@ body.filming #studio .studio-body { grid-template-columns: 0 1fr 0; }
   .film-btn svg, .inside-btn svg { width: 20px; height: 20px; }
   .brand b { font-size: 14px; }
 }
+
+/* ---------------- kolam postcard ---------------- */
+.pc-form { display: grid; grid-template-columns: 160px 1fr; gap: 18px; align-items: start; }
+.pc-kolam { width: 160px; height: 160px; border-radius: 8px; box-shadow: 0 10px 22px -12px rgba(0,0,0,0.6); }
+.pc-card { width: 100%; border-radius: 6px; margin-top: 16px; box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6); display: block; }
+@media (max-width: 600px) { .pc-form { grid-template-columns: 1fr; } .pc-kolam { width: 120px; height: 120px; } }

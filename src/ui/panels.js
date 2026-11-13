@@ -1,6 +1,6 @@
 import { CATS, ATLAS, VERSES, GLOSSARY, TOURS, COMPARE, PLACES, INTERIORS } from '../content/places.js';
 import { MEDIA, creditLine } from '../content/media.js';
-import { img, cfg, upload, testConnection, TAG } from '../media/cloudinary.js';
+import { img, cfg, upload, testConnection, TAG, aiTagsOf, festivalFromTags } from '../media/cloudinary.js';
 import { compareWidget } from './story.js';
 import { escapeHtml } from '../kolam/studio.js';
 import { renderKolam } from '../kolam/engine.js';
@@ -192,10 +192,14 @@ export function contributeModal(modal, { places, onUploaded, openSettings, prese
       }
       bar.style.width = '100%';
       const first = results[0];
-      st.innerHTML = `Added to the map. Cloudinary generated responsive versions automatically${first.tags?.length ? ` · tags: ${first.tags.map(escapeHtml).join(', ')}` : ''}.`;
-      onUploaded(results, { title: f.get('title'), story: f.get('story'), place: f.get('place'), by: f.get('by'), cat: f.get('cat'), festival: f.get('festival') });
+      const ai = [...new Set(results.flatMap(aiTagsOf))];
+      const guessed = !f.get('festival') ? festivalFromTags(ai) : '';
+      st.innerHTML = ai.length
+        ? `Added to the map. <b>Cloudinary AI saw:</b> <span class="chip-row" style="display:inline-flex;margin:6px 0 0">${ai.map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</span>${guessed ? `<br>Filed under <b>${guessed}</b> from those tags.` : ''}`
+        : 'Added to the map. (Turn on auto-tagging in your upload preset and Cloudinary will tag photos for you — see the README.)';
+      onUploaded(results, { title: f.get('title'), story: f.get('story'), place: f.get('place'), by: f.get('by'), cat: f.get('cat'), festival: f.get('festival') || guessed, aiTags: ai });
       toast('Thank you — your memory is now part of Namma Chennai.');
-      setTimeout(() => modal.close(), 1400);
+      setTimeout(() => modal.close(), ai.length ? 4200 : 1800);
     } catch (err) {
       st.textContent = err.message;
     }
