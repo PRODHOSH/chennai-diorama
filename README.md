@@ -10,11 +10,16 @@
 </p>
 
 <p align="center">
+  <a href="https://chennai-diorama.pages.dev/"><b>🌐 Open the live city → chennai-diorama.pages.dev</b></a>
+</p>
+
+<p align="center">
   <img alt="Three.js" src="https://img.shields.io/badge/Three.js-r169-111?logo=threedotjs">
   <img alt="Cloudinary" src="https://img.shields.io/badge/Cloudinary-media%20pipeline-3448C5?logo=cloudinary&logoColor=white">
   <img alt="OpenStreetMap" src="https://img.shields.io/badge/OpenStreetMap-real%20data-7EBC6F?logo=openstreetmap&logoColor=white">
   <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white">
   <img alt="No backend" src="https://img.shields.io/badge/backend-none-c2410c">
+  <a href="https://chennai-diorama.pages.dev/"><img alt="Cloudflare Pages" src="https://img.shields.io/badge/live-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white"></a>
 </p>
 
 ---
@@ -159,9 +164,29 @@ npm run preview       # serve dist/ locally
 npm run screenshots   # re-capture the README images (needs Google Chrome)
 ```
 
-`dist/` is a plain static site, so it runs on Netlify, Vercel, GitHub Pages or Cloudflare Pages.
+Deep links: [`/#place=central`](https://chennai-diorama.pages.dev/#place=central), [`/#place=kandhakottam`](https://chennai-diorama.pages.dev/#place=kandhakottam), [`/#place=home-pongal`](https://chennai-diorama.pages.dev/#place=home-pongal), [`/#studio`](https://chennai-diorama.pages.dev/#studio).
 
-Deep links: `/#place=central`, `/#place=kandhakottam`, `/#place=home-pongal`, `/#studio`.
+### Deploying (Cloudflare Pages)
+
+The live site runs on **Cloudflare Pages**, connected to this repo, and every push to `main` redeploys.
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Environment variables | `VITE_CLOUDINARY_CLOUD_NAME`, `VITE_CLOUDINARY_UPLOAD_PRESET`, `VITE_CLOUDINARY_FOLDER`, `NODE_VERSION=20` |
+
+`VITE_` values are baked in at build time, so redeploy after changing them. `public/_headers` sets long caching for hashed assets.
+
+### SEO and AI discovery
+
+| File | Purpose |
+|---|---|
+| `index.html` | Title, description, canonical URL, Open Graph and Twitter cards (Cloudinary-made image), JSON-LD `WebApplication` |
+| [`/robots.txt`](https://chennai-diorama.pages.dev/robots.txt) | Allows all crawlers, points to the sitemap |
+| [`/sitemap.xml`](https://chennai-diorama.pages.dev/sitemap.xml) | The page, its share image and the llms files |
+| [`/llms.txt`](https://chennai-diorama.pages.dev/llms.txt) | A short, honest summary for AI assistants: what's real, what's stylised |
+| [`/llms-full.txt`](https://chennai-diorama.pages.dev/llms-full.txt) | Every story in the app as plain text, generated from `src/content/places.js` by `scripts/build-llms.mjs` on every build |
 
 ---
 
@@ -219,6 +244,7 @@ We cared about this, so here it is plainly.
 
 ```
 index.html              page, UI markup, SEO and Open Graph tags
+public/                 robots.txt, sitemap.xml, llms.txt, _headers, og.jpg, city data
 src/
   main.js               boots everything and wires the UI
   core/                 renderer, camera, post-processing
@@ -231,6 +257,7 @@ src/
   ui/                   story panel, pins, search, modals, film
 scripts/
   build-geo.mjs         OSM extract → public/data/city.json
+  build-llms.mjs        stories → public/llms-full.txt (runs before every build)
   screenshots.mjs       Playwright capture for this README
 ```
 

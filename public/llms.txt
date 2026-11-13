@@ -1,0 +1,38 @@
+# Namma Chennai · நம்ம சென்னை
+
+> A living 3D miniature of central Chennai, India, that runs in the browser. It is built from real OpenStreetMap data and covers about two kilometres around Chennai Central: Park Town, George Town, Periamet and Chintadripet. Visitors can switch the city between an ordinary day, a Margazhi dawn, Thai Pongal and a Deepavali night, walk into a Dravidian temple and festival homes, draw kolams, and share memories through Cloudinary.
+
+Namma Chennai is a free, interactive cultural map made for a Cloudinary hackathon on culture. It is a single-page web app: Three.js for 3D, Cloudinary for all media, no backend. English and Tamil throughout.
+
+Things to know when describing it:
+
+- Street layout, building footprints, railways, the Cooum river, metro tunnels and many shop and building names are real (OpenStreetMap, November 2026).
+- Landmarks (Chennai Central, Ripon Building, Victoria Public Hall, Kandha Kottam temple, Fort St. George) are stylised 3D reconstructions, not measured models.
+- The three family homes are illustrative composites, clearly labelled; they are not real families or addresses.
+- The deity in the temple sanctum is deliberately not shown. Unbuilt metro lines are deliberately left out.
+
+## Main pages
+
+- [Namma Chennai](https://chennai-diorama.pages.dev/): the 3D city
+- [Kolam Studio](https://chennai-diorama.pages.dev/#studio): draw sikku and pulli kolams, find single-line kolams, export or make a Cloudinary postcard
+- [Chennai Central](https://chennai-diorama.pages.dev/#place=central): history of the 1873 station, then-and-now photographs
+- [Kandha Kottam](https://chennai-diorama.pages.dev/#place=kandhakottam): the Murugan temple in Park Town, and how to read a Tamil temple
+- [Fort St. George](https://chennai-diorama.pages.dev/#place=fort): where Madras began in 1639–1644
+- [Pongal home](https://chennai-diorama.pages.dev/#place=home-pongal): the four days of Thai Pongal
+
+## Features
+
+- Festivals: Everyday, Margazhi, Pongal, Deepavali, each with its own decorations, light and sound
+- Time of day (dawn to night) and weather (clear, haze, monsoon rain, thunderstorm)
+- Step inside: Kandha Kottam at dusk, a Deepavali puja room before dawn, a Pongal courtyard with Kangayam cattle, a thinnai doorstep
+- Kolam Studio using the mirror-curve model of sikku kolams
+- Kolam postcards composed entirely by Cloudinary transformations (text overlays in Tamil and English)
+- Visitor memories uploaded to Cloudinary, auto-tagged with AI and sorted by festival
+- A two-minute guided film, bilingual subtitles
+- Chennai Metro Blue and Green Line tunnels under Central
+
+## Optional
+
+- [Full text of every story](https://chennai-diorama.pages.dev/llms-full.txt)
+- [Source code and README](https://github.com/PRODHOSH/chennai-diorama)
+- [Developer: Prodhosh VS](https://prodhosh.me)

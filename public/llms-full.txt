@@ -1,0 +1,464 @@
+# Namma Chennai · நம்ம சென்னை — full text
+
+> A living 3D miniature of central Chennai (Park Town, George Town, Periamet, Chintadripet), built from real OpenStreetMap data. Live at https://chennai-diorama.pages.dev/
+
+This file contains every story, place note and glossary entry shown in the app, in plain text. Facts about real places are drawn from widely documented history. Stories marked "illustrative" are composites written for this project and are not about real families. 3D landmarks are stylised reconstructions, not measured surveys.
+
+Source code: https://github.com/PRODHOSH/chennai-diorama · Short summary: https://chennai-diorama.pages.dev/llms.txt
+
+## Places and stories
+
+### Chennai Central (சென்னை சென்ட்ரல்)
+
+Heritage · Puratchi Thalaivar Dr. M.G. Ramachandran Central Railway Station · Park Town · Real place · 3D: stylised reconstruction
+Link: https://chennai-diorama.pages.dev/#place=central
+
+**The gateway to the south** (தெற்கின் நுழைவாயில்)
+
+For a century and a half, arriving in Madras — and then Chennai — has meant stepping out under this red-brick clock tower.
+
+Central opened in 1873, when the city’s main terminus shifted here from Royapuram. Its Gothic Revival building, designed by George Harding, was extended over the following decades; the slender clock tower that now defines it rises at the corner where Poonamallee High Road meets Wall Tax Road.
+
+- Opened: 1873
+- Station code: MAS (from “Madras”)
+- Renamed: 2019, after M.G. Ramachandran
+- Style: Gothic Revival, red brick
+
+Long-distance trains leave for Delhi, Mumbai, Kolkata, Bengaluru and Kerala; the Grand Trunk Express, one of India’s oldest named trains, still runs from here to New Delhi. Next door, the Moore Market complex handles the suburban lines towards Arakkonam and Gummidipoondi.
+
+Look at the wall the station faces along: Wall Tax Road is named after a levy collected in the 18th century to build a defensive wall around what was then called Black Town — today’s George Town.
+
+Reconstruction note: In OpenStreetMap the heritage building itself isn’t mapped as a footprint, so its masses here are placed from the mapped porch canopy, concourse paths and kerb lines, and proportioned from the photographs above. The towers, turrets and spires are a stylised reconstruction — not a measured model.
+
+**Then & now: 1880 → today** (அன்றும் இன்றும்)
+
+A photograph by Nicholas & Co., taken around 1880, shows the station before the clock tower we know today. Drag across the comparison to see what changed.
+
+Then & now — Chennai Central (c. 1880 → 2021): The 1880 photograph predates the tall clock tower; the station grew through extensions over the following decades.
+
+By about 1925 the tower had risen, and the building looked much as it does now.
+
+Then & now — Central, 1925 (c. 1925 → 2021): A century apart, almost the same building — the clock tower, the spired towers and the long arcaded front.
+
+**Sounds of the platform** (நடைமேடை ஓசைகள்)
+
+Any Chennaiite can conjure Central with eyes closed: the two-tone horn of an arriving express, the clatter of coaches on points, announcements in Tamil, English and Hindi, and — above everything — vendors calling “kaapi, kaapi” and “tea, tea” down the length of the train.
+
+Note: Synthesised in your browser for this project — not a field recording.
+
+Turn on the soundscape (the speaker button, bottom right) and zoom in to the platforms to hear the city change around you.
+
+Note: Observational essay written for this project.
+
+### Ripon Building (ரிப்பன் மாளிகை)
+
+Heritage · Seat of the Greater Chennai Corporation · Real place · 3D: stylised reconstruction
+Link: https://chennai-diorama.pages.dev/#place=ripon
+
+**The city’s white palace** (நகரின் வெண் மாளிகை)
+
+Brilliantly white against the red brick of its neighbours, Ripon Building is where Chennai governs itself.
+
+Completed in 1913 to designs by G.S.T. Harris and built by the contractor Loganatha Mudaliar, it combines Ionic and Corinthian orders in a neo-classical composition, crowned by a clock tower above the entrance portico.
+
+It is named after Lord Ripon, Viceroy of India from 1880 to 1884, remembered for the 1882 resolution that laid foundations for elected local self-government. The Corporation it houses traces its origins to 1688, making it one of the oldest municipal bodies of its kind.
+
+- Completed: 1913
+- Architect: G.S.T. Harris
+- Builder: Loganatha Mudaliar
+- Corporation since: 1688
+
+Old cannons displayed on the lawns — they appear in OpenStreetMap, too — are reminders of the Fort-era city a kilometre east.
+
+Reconstruction note: Footprint (including its two inner courtyards) from OpenStreetMap; height, colonnades, portico and tower are a stylised reconstruction from photographs.
+
+### Victoria Public Hall (விக்டோரியா பொது மண்டபம்)
+
+Heritage · Town hall, theatre and meeting place · Real place · 3D: stylised reconstruction
+Link: https://chennai-diorama.pages.dev/#place=victoria
+
+**A hall for the public** (மக்களுக்கான மண்டபம்)
+
+Between Central and Ripon Building stands a red-brick hall built so the city’s people had somewhere to gather.
+
+Victoria Public Hall was built between 1888 and 1890 to designs by Robert Fellowes Chisholm, and named for Queen Victoria’s Golden Jubilee. It hosted public meetings, lectures and performances; it is often cited as the venue of the first film screening in Madras, in 1896.
+
+- Built: 1888–1890
+- Architect: R. F. Chisholm
+- Style: Romanesque, Indo-Saracenic details
+- Material: Red brick (OSM: building:material=brick)
+
+Then & now — Victoria Public Hall (Early photograph → 2009): The KITLV photograph (date not recorded) shows the hall in its early setting.
+
+Reconstruction note: Footprint from OpenStreetMap. The tiled roof and tower are stylised from photographs.
+
+### Southern Railway Headquarters (தென்னக இரயில்வே தலைமையகம்)
+
+Heritage · Park Town · Real place · 3D: stylised reconstruction
+Link: https://chennai-diorama.pages.dev/#place=srhq
+
+**Red brick, railway domes** (சிவப்புச் செங்கல் மாளிகை)
+
+Across Wall Tax Road from Central, a second red-brick landmark runs the railways of the south.
+
+The headquarters of Southern Railway — the zone formed in 1951 — occupies an early-20th-century Indo-Saracenic building whose brick and white trim echo the station opposite. Together with Central, Victoria Public Hall and Ripon Building it forms one of the most photographed heritage ensembles in the city.
+
+Reconstruction note: Footprint with courtyards from OpenStreetMap; domes and tower are stylised.
+
+### Central Metro (சென்ட்ரல் மெட்ரோ)
+
+Public space · Underground interchange · Blue & Green lines · Real place
+Link: https://chennai-diorama.pages.dev/#place=central-metro
+
+**A city beneath the city** (நகரின் கீழ் ஒரு நகரம்)
+
+Under the forecourt of Central, two metro lines cross in one of the largest underground stations in the city.
+
+Chennai Metro’s Blue Line (Line 1) runs from the Airport to Wimco Nagar, passing through Central and High Court on its way north through George Town. The Green Line (Line 2) begins here at Central and runs to St Thomas Mount. Both tunnels, both stations and the street entrances you see on the map — S3, S4, B5 near Central and A2, A3 at High Court — are mapped in OpenStreetMap.
+
+- Lines here: Blue (1) & Green (2)
+- Stations on this map: Central Metro, High Court
+- Trains: 4-car sets
+- Above ground: MRTS viaduct, suburban & long-distance trains
+
+Above ground, the elevated MRTS line crosses the south of the map on its viaduct, and the suburban terminal at Moore Market sends EMUs west towards Arakkonam and north towards Gummidipoondi.
+
+Note: Phase 2 of Chennai Metro — including the Purple, Orange and Red lines — is under construction elsewhere in the city and does not pass through this area, so it is not shown. Tunnel depths in the x-ray view are illustrative.
+
+### Moore Market (site of) (மூர் மார்க்கெட்)
+
+Public space · Now the Chennai Suburban Terminal · Real place
+Link: https://chennai-diorama.pages.dev/#place=moore
+
+**The market that burned** (எரிந்த சந்தை)
+
+Ask an older Chennaiite about second-hand books and they’ll say two words: Moore Market.
+
+Opened in 1900 beside the station and named after Sir George Moore, President of the Madras Corporation, the market sold everything — books, gramophone records, pets, tools — in an Indo-Saracenic building around a courtyard. It was destroyed by fire in 1985. The site is now the Moore Market Complex, the terminal for suburban trains.
+
+Its frontage ran to 350 feet. In the early mornings, the 1905 caption says, practically all the city’s marketing happened here; later it became a maze of second-hand bookstalls, pet and bird sellers, gramophone records and odd hardware that generations of students remember.
+
+Then & now — Moore Market (c. 1905 → Today): The red-brick market of 1900 burned down in 1985. Its site is now the Moore Market Complex, the suburban railway terminal next to Central.
+
+If you have a memory of buying your first book here, add it to the map.
+
+### Fort St. George (புனித ஜார்ஜ் கோட்டை)
+
+Heritage · Where the city began · 1644 · Real place
+Link: https://chennai-diorama.pages.dev/#place=fort
+
+**Where Madras began** (சென்னை தோன்றிய இடம்)
+
+Every one of the streets on this map grew outward from the bastions at its eastern edge.
+
+On 22 August 1639, two officers of the English East India Company, Francis Day and Andrew Cogan, obtained a strip of sandy coast from Damarla Venkatadri Nayaka, a local chief serving the Vijayanagara rulers. They built a fort there, and finished it in 1644 — the first English fortress in India — naming it after St George, the patron saint of England.
+
+Weavers, dyers and merchants settled around it. The fishing village of Madraspatnam to the north and the settlement of Chennapatnam — commonly said to be named after Venkatadri’s father, Chennappa Nayaka — grew together into one city. That is why it has two names, and why Chennai still celebrates its birthday as Madras Day, on 22 August.
+
+- Land grant: 22 August 1639
+- Fort completed: 1644
+- Named after: St George
+- Today: Tamil Nadu Assembly & Secretariat
+
+Then & now — Fort St. George (1754 engraving → 2014): In 1754 the Fort stood almost on the surf, with ships riding at anchor offshore. Land reclaimed for the harbour and the Marina later pushed the sea further away.
+
+Reconstruction note: The bastions, ravelins and gates on this map (Wallajah Gate, St George’s Gate) are OpenStreetMap footprints, extruded as earthworks. The Secretariat buildings inside the walls lie just beyond the map’s edge.
+
+**Inside the walls** (கோட்டைக்குள்)
+
+Behind the Fort’s walls stands a church that connects Chennai to a university on the other side of the world.
+
+St Mary’s Church was consecrated in 1680, making it the oldest Anglican church east of Suez. Its registers record the marriage of Elihu Yale, who later served as Governor of Madras. Years after he returned to England, Yale sent books and goods to a struggling college in Connecticut — which renamed itself Yale in his honour. Robert Clive, whose campaigns began the British conquest of India, was married here too, in 1753.
+
+Nearby, the Fort Museum keeps coins, uniforms, weapons and portraits from three centuries of the Fort’s history, along with the statue of Lord Cornwallis that once stood under the domed cupola you can see in the photographs.
+
+Today the Fort is still a seat of power: the Legislative Assembly and the Secretariat of Tamil Nadu work inside it.
+
+### People’s Park (மக்கள் பூங்கா)
+
+Public space · Laid out in 1859 · Real place
+Link: https://chennai-diorama.pages.dev/#place=peoplespark
+
+**A park for the people** (மக்களுக்கான பூங்கா)
+
+In 1859 the Governor of Madras, Sir Charles Trevelyan, set aside a large green space north of the city for the public — the first of its kind in Madras.
+
+People’s Park had lakes, carriage drives and avenues of palms, and for well over a century it held the city’s zoo, until the animals moved to the new Arignar Anna Zoological Park at Vandalur in the 1980s. Parts of the old park ground are now occupied by the Jawaharlal Nehru Stadium and Nehru Indoor Stadium — you can see their outlines, mapped in OpenStreetMap, on this side of the city.
+
+There is a small memorial to Trevelyan beside Ripon Building, on the same road — it is mapped in OpenStreetMap too.
+
+### Memorial Hall (நினைவு மண்டபம்)
+
+Heritage · Park Town · built after 1857 · Real place
+Link: https://chennai-diorama.pages.dev/#place=memorialhall
+
+**A hall of thanksgiving** (நன்றி மண்டபம்)
+
+Just east of Central, a columned building remembers a war that did not reach Madras.
+
+The uprising of 1857 shook northern India. Madras was spared the fighting, and its residents raised money by public subscription for a hall of thanksgiving, completed in the years that followed. It stands on Memorial Hall Road in Park Town, a short walk from Central — and from the Bible Society building beside it, mapped in OpenStreetMap.
+
+Look for its tall classical portico: Park Town is full of such buildings, half-hidden behind lodges, signboards and fruit stalls.
+
+### Kandha Kottam (கந்த கோட்டம்)
+
+Temple · Murugan temple, Park Town · Real place · 3D: stylised reconstruction
+Link: https://chennai-diorama.pages.dev/#place=kandhakottam
+
+**A poet’s temple** (வள்ளலாரின் கோயில்)
+
+In the lanes behind Central, a gopuram rises over Rasappa Chetty Street: Kandha Kottam, one of George Town’s best-loved temples, dedicated to Murugan.
+
+It is closely associated with Ramalinga Swamigal — Vallalar — the 19th-century saint-poet who sang to the deity here in his youth, before preaching compassion for every living being.
+
+#### How to read a Tamil temple
+
+1. Rajagopuram — the gateway tower. Granite base, then stucco tiers crowded with painted figures, crowned by a barrel vault and gilded kalasams.
+2. Prakaram — the enclosure wall in red-and-white kaavi stripes, walked clockwise.
+3. Deepasthambam, balipitham, kodimaram — lamp pillar, lotus offering-stone and gilded flagstaff, all on the axis to the sanctum.
+4. Mayil — Murugan’s peacock, facing the sanctum.
+5. Mandapam and vimanam — the pillared hall, and the tower over the sanctum where the deity sits in lamp-light.
+
+Note: The photographs show the Ekambareswarar temple and the bazaar streets nearby in George Town — we have not yet found an openly licensed photograph of Kandha Kottam itself. If you have one, share it from the menu.
+
+Outside, as at every temple gate, stalls sell flowers, coconuts and camphor for the archana, and there’s a stand to leave your footwear. The temple’s own tank, mapped in OpenStreetMap as Kandaswami Muthukumaraswami Koil Kulam, lies just beside it, with a pavilion (neerazhi mandapam) in the water.
+
+Reconstruction note: OpenStreetMap maps the temple as a point and its tank as a polygon. The complex here — gopuram, walls, mandapam, vimanam — is a stylised reconstruction built to the grammar of Dravidian temple architecture and placed facing the street; it is not a survey of the real building, whose proportions differ.
+
+### Temple tank of Ekambareswarar (கோயில் குளம்)
+
+Temple · George Town · Real place
+Link: https://chennai-diorama.pages.dev/#place=kulam
+
+**Why every temple has a tank** (குளம் ஏன்?)
+
+Steps descending on all four sides, a pavilion in the middle, water reflecting a gopuram: the temple tank is one of Tamil Nadu’s most beautiful pieces of civic engineering.
+
+Tanks gather the monsoon rain that recharges the wells of the surrounding streets. They are used for ritual bathing, and on festival nights the deity is taken around the water on a lamp-lit float — the theppam, or float festival.
+
+In George Town’s grid of narrow streets, OpenStreetMap records several tanks beside their temples, including this one beside Ekambareswarar temple and others named for Kandaswami and Chennamalleswarar.
+
+Reconstruction note: Tank outline from OpenStreetMap; the gopuram is a generic stylised form.
+
+### Raja Annamalai Mandram (ராஜா அண்ணாமலை மன்றம்)
+
+Music · Tamil Isai Sangam · Esplanade · Real place
+Link: https://chennai-diorama.pages.dev/#place=annamalai
+
+**Songs in Tamil** (தமிழிசை)
+
+Every December Chennai becomes the world’s busiest classical-music city. This hall has a special place in that story.
+
+Raja Annamalai Mandram is home to the Tamil Isai Sangam, founded in 1943 to champion concerts sung in Tamil at a time when other languages dominated the classical stage. Its annual festival is part of the city’s December Music Season, when hundreds of concerts fill sabhas across Chennai.
+
+The concert photographs above were taken at other venues during the 2017 season — they show what a December kutcheri looks like.
+
+Note: Synthesised in your browser for this project.
+
+### Government College of Arts and Crafts (அரசு கவின் கலைக் கல்லூரி)
+
+Art & craft · Periamet · Real place
+Link: https://chennai-diorama.pages.dev/#place=artscollege
+
+**An art school since 1850** (1850 முதல்)
+
+At the western edge of our map is one of the oldest art schools in India.
+
+Founded in 1850 as the Madras School of Art, the college trained generations of artists and craftspeople. Under principal K.C.S. Paniker its students helped shape the Madras Art Movement, and many later founded the Cholamandal Artists’ Village on the coast in 1966.
+
+The school taught photography from its early decades — the 1865 photograph above was made by a photographer working from it.
+
+#### Crafts of Tamil Nadu
+
+The state’s great craft traditions live mostly beyond this map: Thanjavur paintings with gilded relief, lost-wax bronzes from Swamimalai, silk from Kanchipuram. Open “Beyond the map” in the menu to visit them.
+
+### Chintadripet (சிந்தாதிரிப்பேட்டை)
+
+Art & craft · The little loom town · Real place
+Link: https://chennai-diorama.pages.dev/#place=chintadripet
+
+**Chinna-thari-pettai** (சின்னத் தறிப் பேட்டை)
+
+The narrow lanes south-west of Central were laid out for weavers.
+
+Chintadripet was founded in the 1730s as a settlement for weavers supplying cloth to the East India Company. Its name is commonly explained as chinna-thari-pettai, “the town of small looms”.
+
+Handloom weaving in Tamil Nadu reaches its height in Kanchipuram silk — heavy, lustrous saris with contrasting borders woven with zari, often joined to the body by the korvai technique so border and body are different colours.
+
+The illustrative homes on this map — the kolam house and the Pongal house — stand in Chintadripet’s lanes.
+
+### Kaapi & tiffin, Park Town (காபி & டிபன்)
+
+Food · The tea stalls and tiffin centres around Central · Real place
+Link: https://chennai-diorama.pages.dev/#place=kaapi
+
+**Filter kaapi, the Chennai way** (ஃபில்டர் காபி)
+
+Before the trains, before the traffic, Chennai wakes up to the sound of coffee being poured from a height.
+
+OpenStreetMap lists more than a dozen tea stalls, coffee houses and tiffin centres within a few minutes’ walk of Central. What they share is a ritual: decoction dripped slowly through a two-tiered brass filter, mixed with hot milk and sugar, then poured between tumbler and davara until it froths.
+
+1. Pack ground coffee (often blended with chicory) into the upper chamber of the filter.
+2. Pour boiling water over it, close the lid and let a thick decoction drip through — fifteen minutes or more.
+3. Heat milk until it just rises.
+4. Add a little decoction and sugar to the tumbler, then the milk.
+5. Pour between tumbler and davara, pulling the stream long, until a soft froth forms.
+
+#### Tiffin
+
+“Tiffin” is the Chennai word for light meals — idli, dosa, vada, pongal and upma — eaten with sambar and coconut chutney. Lunch is “meals”: rice with sambar, rasam, kootu, poriyal and curd, served on a banana leaf.
+
+### Flower Bazaar (பூக்கடை)
+
+Food · George Town · Real place
+Link: https://chennai-diorama.pages.dev/#place=pookadai
+
+**A neighbourhood named for flowers** (பூக்கடை)
+
+The police station on this corner is still called Flower Bazaar — Pookadai in Tamil — after the flower trade that filled these streets.
+
+Strings of jasmine (malli) for the hair, marigold garlands for doorways and temples, kanakambaram in orange: flowers are an everyday necessity in Tamil life, not a luxury. Much of the wholesale flower market moved to Koyambedu in the 1990s, but the name — and many flower sellers — remain.
+
+George Town around it is the city’s great wholesale bazaar — streets of grain, spices, steel vessels, textiles and gold, packed into lanes laid out in the 18th century.
+
+In Pongal and Deepavali modes, look for the marigold strings on doorways across the map.
+
+### A morning at the vaasal (வாசல் கோலம்)
+
+Household tradition · Illustrative home · Chintadripet lane · Illustrative composite
+Link: https://chennai-diorama.pages.dev/#place=home-kolam
+
+**The kolam my grandmother taught me** (பாட்டி கற்றுத் தந்த கோலம்)
+
+(Illustrative story — a composite, not a real family.)
+
+“Before the milk packets arrive, before the first bus, Paati is already at the door with a bucket of water and a small steel tin of rice flour.”
+
+She sweeps the threshold, sprinkles water to settle the dust, and sets down the dots — one, three, five, three, one — pinched between thumb and forefinger. Then the line begins, and it does not stop until it has wound around every dot and come home to where it started.
+
+“Why rice flour?” I asked once. “So the ants have breakfast too,” she said.
+
+**Why kolams are drawn at dawn** (ஏன் விடியலில்?)
+
+Across Tamil Nadu, women of the household traditionally draw a kolam at the threshold (vaasal) every morning. It welcomes guests and the goddess Lakshmi into the home, and because it is made of rice flour it is also an offering to ants, birds and small creatures.
+
+There are many families of design. Pulli kolams join dots; sikku (or kambi) kolams weave lines around the dots without touching them; padi kolams are geometric and drawn for auspicious occasions. During the month of Margazhi kolams grow street-sized; at Pongal they burst into colour.
+
+Mathematicians have long been fascinated: computer scientist Gift Siromoney studied kolams as “picture languages” in the 1970s, and the drawing rule used in our Studio — mirror curves — was explored by Paulus Gerdes for related traditions.
+
+### Deepavali before dawn (தீபாவளி)
+
+Festival · Illustrative home · George Town · Illustrative composite
+Link: https://chennai-diorama.pages.dev/#place=home-deepavali
+
+**“Ganga snanam aachaa?”** (கங்கா ஸ்நானம் ஆச்சா?)
+
+(Illustrative story — a composite, not a real family.)
+
+In Tamil homes Deepavali begins in the dark, around four in the morning, with warm sesame oil.
+
+The eldest woman of the house dabs oil on everyone’s head; the oil bath that follows is called Ganga snanam, and for the rest of the day the greeting on the street is “Ganga snanam aachaa?” — “Have you had your Ganga bath?”
+
+New clothes are laid out with sweets and a spoonful of Deepavali legiyam, a dark herbal paste meant to help digest everything that comes next: athirasam, murukku, mysore pak and the first crackers, set off on the street before sunrise. In Tamil Nadu the festival commemorates Krishna’s victory over the demon Narakasura.
+
+**Our other festival of lamps** (கார்த்திகை தீபம்)
+
+Visitors from the north are often surprised: in Tamil Nadu the great festival of lamps is not Deepavali but Karthigai Deepam, a few weeks later, when rows of clay agal vilakku line every doorstep, window ledge and wall.
+
+Its most famous flame is lit on the hill at Tiruvannamalai.
+
+### Pongalo Pongal! (பொங்கலோ பொங்கல்)
+
+Festival · Illustrative home · Chintadripet · Illustrative composite
+Link: https://chennai-diorama.pages.dev/#place=home-pongal
+
+**Four days of thanks** (நான்கு நாட்கள்)
+
+(Illustrative story — a composite, not a real family.)
+
+Pongal is the harvest festival of the Tamils, held in mid-January as the month of Thai begins. “Thai pirandhal vazhi pirakkum,” people say — when Thai is born, a way will open.
+
+- Bhogi (போகி): The last day of Margazhi. Houses are cleaned and old things discarded — traditionally in a bonfire at dawn. (Chennai now encourages smoke-free Bhogi to protect air quality.)
+- Thai Pongal (தைப் பொங்கல்): In the courtyard or on the street, new rice is boiled with milk and jaggery in a new pot tied with turmeric. When it boils over, everyone shouts “Pongalo Pongal!” and the first portion is offered to the Sun.
+- Mattu Pongal (மாட்டுப் பொங்கல்): A day for the cattle who work the fields: they are bathed, their horns painted, garlanded with bells and fed pongal.
+- Kaanum Pongal (காணும் பொங்கல்): A day of visiting — relatives, friends, and in Chennai, the Marina beach, which fills with families.
+
+**Sakkarai pongal at our home** (சர்க்கரைப் பொங்கல்)
+
+(Illustrative story — a composite, not a real family.)
+
+Rice and a little moong dal, boiled soft in milk; jaggery melted in, then cardamom, cashews and raisins fried in ghee. It is the same pot that boiled over in the morning — sweet, sticky, and best eaten from a banana leaf while still warm.
+
+Its everyday cousin, ven pongal, is savoury — peppercorns, cumin, ginger and curry leaves — and a fixture of Chennai tiffin.
+
+### Margazhi mornings (மார்கழி)
+
+Festival · Street story · Chintadripet lanes · Real place
+Link: https://chennai-diorama.pages.dev/#place=margazhi
+
+**The month of dawn** (விடியலின் மாதம்)
+
+From mid-December to mid-January, Tamil streets wake earlier than at any other time of year.
+
+> மார்கழித் திங்கள் மதி நிறைந்த நன்னாளால்
+> “In the month of Margazhi, on this day of the full moon…” — the opening line of Andal’s Tiruppavai, sung at dawn throughout the month.
+
+Groups sing bhajans through the lanes before sunrise, and the kolams at every door become larger and more elaborate — some streets hold competitions. In the evenings the December Music Season fills the sabhas.
+
+## Step inside — walk-in scenes
+
+- **Kandha Kottam at dusk** (அந்தியில் கந்த கோட்டம்): Walk through the rajagopuram into a Dravidian temple courtyard — lamp pillar, gilded flagstaff, Murugan’s peacock, the pillared mandapam and the sanctum tower.
+- **Deepavali before dawn** (தீபாவளி அதிகாலை): A George Town puja room at 4:30 am — the brass kuthuvilakku, agal lamps, sweets, new silks and the Ganga snanam oil bath, with crackers outside.
+- **The courtyard on Thai Pongal** (முற்றத்தில் பொங்கல்): A pot boiling over on a wood fire in an open courtyard, sugarcane and a banana-leaf feast — and the cattle shed, decorated for Mattu Pongal.
+- **A morning at the vaasal** (வாசல் கோலம்): The thinnai verandah at sunrise. Watch a kolam being drawn, line by line, on the freshly washed threshold.
+
+## Guided journeys
+
+- **A heritage walk** (பாரம்பரிய நடை): Seven stops, from the station and the metro beneath it to the Fort. Stops: central, central-metro, victoria, ripon, peoplespark, srhq, memorialhall, moore, fort.
+- **Household traditions** (வீட்டு மரபுகள்): Kolam at dawn, Margazhi, Pongal and Deepavali at home. Stops: home-kolam, margazhi, home-pongal, home-deepavali.
+- **A kolam journey** (கோலப் பயணம்): Learn the kolam, then try it in the Studio. Stops: home-kolam, margazhi, home-pongal.
+- **The food trail** (உணவுப் பாதை): Kaapi, flowers and sakkarai pongal. Stops: kaapi, pookadai, home-pongal.
+- **Music & making** (இசையும் கலையும்): Tamil Isai, an art school from 1850, and a weavers’ town. Stops: annamalai, artscollege, chintadripet.
+
+## Atlas — places beyond the map
+
+- **Mylapore** (மயிலாப்பூர், 13.0339, 80.2696): Around the Kapaleeshwarar temple and its great tank, Mylapore keeps the feel of an old temple town inside the city. Margazhi kolams on its streets are famous, and its sabhas anchor the December Music Season.
+- **Armenian Church, George Town** (ஆர்மீனியன் தேவாலயம், 13.0921, 80.2878): Armenian merchants traded in Madras from the 1600s. Their Church of the Holy Virgin Mary on Armenian Street dates from 1772, and in 1794 Madras printed Azdarar — the first Armenian-language periodical anywhere in the world. Just north of this map.
+- **Marina Beach** (மெரினா கடற்கரை, 13.05, 80.2824): Chennai’s long urban beach. On Kaanum Pongal it fills with families on outings — the city’s biggest picnic.
+- **Kanchipuram** (காஞ்சிபுரம், 12.8342, 79.7036): The temple town of silk. Kanchipuram saris are hand-woven from mulberry silk with zari borders; the best are woven with contrasting borders interlocked with the body.
+- **Thanjavur** (தஞ்சாவூர், 10.787, 79.1378): Home of the Brihadeeswarar temple and of Thanjavur painting — devotional panels with raised gesso work, gold foil and inset stones.
+- **Swamimalai** (சுவாமிமலை, 10.9573, 79.3256): Families here still cast bronze icons by the lost-wax method: a wax model is coated in clay, the wax melted out, and metal poured into the space it leaves.
+- **Chettinad (Karaikudi)** (செட்டிநாடு, 10.0731, 78.7732): A region of grand mansions and one of India’s most celebrated cuisines — rich with black pepper, star anise and freshly ground masalas.
+- **Tiruvannamalai** (திருவண்ணாமலை, 12.2253, 79.0747): On Karthigai Deepam a great flame is lit on top of the Arunachala hill, visible for miles around.
+
+## Verses
+
+> யாதும் ஊரே யாவரும் கேளிர்
+> Every town is our town; everyone is our kin. — Kaniyan Pungundranar, Purananuru 192
+
+> அகர முதல எழுத்தெல்லாம் ஆதி / பகவன் முதற்றே உலகு
+> As the letter A is the first of all letters, so the Primal One is first of all the world. — Thiruvalluvar, Thirukkural 1
+
+> மார்கழித் திங்கள் மதி நிறைந்த நன்னாளால்
+> In the month of Margazhi, on this day of the full moon… — Andal, Tiruppavai 1
+
+> கற்றது கைமண் அளவு, கல்லாதது உலகளவு
+> What we have learned is a handful of sand; what we have not, the size of the world. — Attributed to Avvaiyar
+
+## Glossary
+
+- கோலம் (kolam): Threshold drawing in rice flour
+- புள்ளி (pulli): Dot (of a kolam grid)
+- வாசல் (vaasal): Entrance, threshold
+- திண்ணை (thinnai): Raised verandah platform at the front of a house
+- முற்றம் (mutram): Open courtyard inside a house
+- குளம் (kulam): Tank, pond (of a temple)
+- கோபுரம் (gopuram): Gateway tower of a temple
+- அகல் விளக்கு (agal vilakku): Clay oil lamp
+- பொங்கல் (pongal): To boil over; the festival; the dish
+- பாட்டி (paati): Grandmother
+- நம்ம (namma): Our (inclusive, colloquial)
+
+## Credits
+
+Map data © OpenStreetMap contributors (ODbL). Photographs from Wikimedia Commons, credited in the app. Built by Prodhosh VS — https://prodhosh.me

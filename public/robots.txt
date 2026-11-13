@@ -1,0 +1,9 @@
+# Namma Chennai — everyone is welcome, people and crawlers alike.
+User-agent: *
+Allow: /
+
+Sitemap: https://chennai-diorama.pages.dev/sitemap.xml
+
+# Plain-text summaries for AI assistants:
+#   https://chennai-diorama.pages.dev/llms.txt
+#   https://chennai-diorama.pages.dev/llms-full.txt
