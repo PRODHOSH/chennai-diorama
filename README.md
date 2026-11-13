@@ -1,10 +1,144 @@
-# Namma Chennai · நம்ம சென்னை
+<p align="center">
+  <img src="docs/screenshots/header.jpg" alt="Namma Chennai — a living miniature of central Chennai" width="100%">
+</p>
 
-A small piece of Chennai you can walk around in.
+<h1 align="center">Namma Chennai · நம்ம சென்னை</h1>
 
-It's about two kilometres of the old city around Chennai Central: Park Town, George Town, Periamet and Chintadripet. It's built in 3D from real OpenStreetMap data, and you can switch it between an ordinary morning, a Margazhi dawn, Thai Pongal and a Deepavali night. You can walk into a Murugan temple and a few homes, draw a kolam and leave it on a doorstep, and add your own photos and memories through Cloudinary.
+<p align="center">
+  <b>A small piece of Chennai you can walk around in.</b><br>
+  Real streets, a working temple, four festivals, kolams you can draw, and photos that all go through Cloudinary.
+</p>
 
-We made it for a culture-focused hackathon. The idea is simple. A city map tells you where things are. It doesn't tell you what happens on the threshold of a house at five in the morning, or what a temple gate smells like at dusk. We wanted something that does.
+<p align="center">
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-r169-111?logo=threedotjs">
+  <img alt="Cloudinary" src="https://img.shields.io/badge/Cloudinary-media%20pipeline-3448C5?logo=cloudinary&logoColor=white">
+  <img alt="OpenStreetMap" src="https://img.shields.io/badge/OpenStreetMap-real%20data-7EBC6F?logo=openstreetmap&logoColor=white">
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white">
+  <img alt="No backend" src="https://img.shields.io/badge/backend-none-c2410c">
+</p>
+
+---
+
+A city map tells you where things are. It doesn't tell you what happens on the threshold of a house at five in the morning, or what a temple gate looks like at dusk. We wanted something that does.
+
+So we built about two kilometres of old Chennai around Chennai Central: Park Town, George Town, Periamet and Chintadripet. It's made in 3D from real OpenStreetMap data. You can switch it between an ordinary morning, a Margazhi dawn, Thai Pongal and a Deepavali night. You can walk into a Murugan temple and a few homes, draw a kolam and leave it on a doorstep, turn that kolam into a postcard, and add your own memories of the city.
+
+<p align="center">
+  <img src="docs/screenshots/hero.jpg" alt="Chennai Central, Ripon Building and Victoria Hall in golden light" width="100%">
+  <br><sub>Chennai Central, Victoria Public Hall and the platform sheds, as a miniature in golden-hour light.</sub>
+</p>
+
+---
+
+## A look around
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/temple.jpg" alt="Kandha Kottam temple at dusk"><br><sub><b>Kandha Kottam at dusk.</b> A seven-tier gopuram, kaavi-striped walls and the temple tank next to it.</sub></td>
+    <td width="50%"><img src="docs/screenshots/temple-inside.jpg" alt="Inside the temple courtyard"><br><sub><b>Step inside the temple.</b> The flagstaff, Murugan's peacock, the pillared hall and the sanctum tower.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/deepavali.jpg" alt="Deepavali night with fireworks"><br><sub><b>Deepavali night.</b> Lamps on every threshold and fireworks over the open grounds.</sub></td>
+    <td><img src="docs/screenshots/deepavali-room.jpg" alt="A puja room before dawn on Deepavali"><br><sub><b>Deepavali at 4:30 am.</b> A brass kuthuvilakku, a kolam ringed with agal lamps, and sweets.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/pongal-cattle.jpg" alt="Kangayam cattle for Mattu Pongal"><br><sub><b>Mattu Pongal.</b> Kangayam cattle with painted horns, in a courtyard you can step through day by day.</sub></td>
+    <td><img src="docs/screenshots/storm.jpg" alt="Thunderstorm over Chennai Central"><br><sub><b>Monsoon.</b> The roads go glossy and lightning picks out the tallest things in the city.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/central-story.jpg" alt="Chennai Central story panel"><br><sub><b>Every landmark has a story.</b> Real Wikimedia photographs with the author and licence shown, plus the history.</sub></td>
+    <td><img src="docs/screenshots/fort-story.jpg" alt="Fort St. George story"><br><sub><b>Fort St. George, 1644.</b> Where the city began, told in chapters.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/metro.jpg" alt="Chennai Metro x-ray view"><br><sub><b>Metro x-ray.</b> The real Blue and Green Line tunnels under Central. Lines that aren't built yet are left out.</sub></td>
+    <td><img src="docs/screenshots/streets.jpg" alt="Real shop and hotel names on the street"><br><sub><b>Real names on the street.</b> About a hundred hotels, lodges and shops carry their real OSM names.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/film.jpg" alt="Guided film"><br><sub><b>Watch the film.</b> A two-minute guided showreel in letterbox with Tamil and English subtitles.</sub></td>
+    <td><img src="docs/screenshots/step-inside.jpg" alt="Step inside chooser"><br><sub><b>Four places to walk into</b>, each with numbered markers that explain what you're looking at.</sub></td>
+  </tr>
+</table>
+
+### Kolam Studio → postcard
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/kolam-studio.jpg" alt="Kolam Studio"><br><sub><b>Kolam Studio.</b> Sikku kolams worked out as mirror curves. It can search for a pattern drawn as one unbroken line.</sub></td>
+    <td width="50%"><img src="docs/screenshots/postcard.jpg" alt="Cloudinary kolam postcard"><br><sub><b>The postcard.</b> One uploaded PNG. The rest of the card, including the Tamil text, the postmark and the border, is Cloudinary transformations.</sub></td>
+  </tr>
+</table>
+
+### On a phone
+
+<p align="center">
+  <img src="docs/screenshots/mobile.jpg" alt="Mobile city view" width="260">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/mobile-story.jpg" alt="Mobile story view" width="260">
+</p>
+
+---
+
+## Tech stack
+
+| Layer | Tool | What it does here |
+|---|---|---|
+| 3D engine | **Three.js r169** | Draws the whole city: a custom building shader, instanced trees and traffic, bloom, tilt-shift and a screen-space rain pass. There are no downloaded 3D models. Everything is generated in code. |
+| Animation | **GSAP 3** | Camera flights, festival changes, the film, lightning timing |
+| Build | **Vite 5** | Dev server and a static production build |
+| Map data | **OpenStreetMap** | 2,449 buildings, 795 roads, railways, the Cooum, metro tunnels and real names, preprocessed into a ~450 KB JSON file by `scripts/build-geo.mjs` |
+| Media | **Cloudinary** | Every image you see, every upload, the postcards, AI tags and the share card (details below) |
+| Archive photos | **Wikimedia Commons** | Openly licensed photographs, credited wherever they appear |
+| Sound | **Web Audio API** | City hum, temple bells, train horns, rain and thunder, all generated in the browser |
+| Screenshots | **Playwright** | `npm run screenshots` captures every image in this README from the real app |
+| Language | **Plain JavaScript (ES modules)** | No framework and no backend. One HTML file. |
+
+---
+
+## How we use Cloudinary
+
+Cloudinary is how every picture in the app gets delivered. There's no server, so the browser talks to Cloudinary directly, using only a cloud name and an **unsigned** upload preset.
+
+| Feature | Cloudinary feature | How it works | Where |
+|---|---|---|---|
+| **Archive photos** | Fetch delivery + transformations | Wikimedia originals are fetched through Cloudinary and sized for each place they appear: a 96px pin, a thumbnail, a story header, a full-screen view. All use `f_auto,q_auto`, and `g_auto` crops around the subject. | `src/media/cloudinary.js` |
+| **Responsive images** | `srcset` with width transforms | Each preset generates several widths so phones download small files. | `img()` / `srcset()` |
+| **Visitor memories** | Unsigned upload API | Photos, video and audio upload with tags (`namma-chennai`, category, festival, place) and context metadata (caption, story, place, display name). | `upload()` |
+| **Everyone's memories on the map** | Client-side resource list | `/image/list/namma-chennai.json` and `/video/list/…` are read on load, and each memory becomes a pin next to its place. | `listTagged()` |
+| **AI auto-tagging** | Google / Amazon auto-tagging add-on | Tags such as *oil lamp*, *cattle* or *pattern* come back on upload. The app shows them and uses them to file a memory under Deepavali, Pongal or Margazhi when the visitor didn't choose one. | `aiTagsOf()`, `festivalFromTags()` |
+| **Kolam postcards** | Text overlays, padding, rotation, borders | The kolam uploads once as a PNG. `c_pad` makes the 1800×1100 card. Text layers in Hind Madurai (Tamil) and Playfair Display add the greeting and your name. `a_-14` tilts a "CHENNAI · 600 003" postmark, and `bo_16px` adds the gold border. The result is one permanent URL. | `src/media/postcard.js` |
+| **Shared kolams** | Upload + context metadata | A placed kolam carries its pattern data, so other visitors see it drawn on a doorstep in their own city. | `src/kolam/studio.js` |
+| **Video** | Video delivery | Automatic format and quality, with a generated poster frame. | `src/media/cloudinary.js` |
+| **Share card (Open Graph)** | Crop, `e_gradient_fade`, text layers | A render of the city is cropped to 1200×630, faded to indigo on the left, and titled in Tamil and English. | `index.html` |
+| **Graceful fallback** | — | At startup the app checks whether fetch delivery is allowed. If it isn't, photos load straight from Wikimedia and nothing breaks. | `probeFetch()` |
+
+### Setting it up
+
+1. **Cloud name.** It's at the top left of your Cloudinary dashboard.
+2. **Unsigned upload preset.** Settings → Upload → Upload presets → Add. Set *Signing mode* to **Unsigned**.
+3. **Allow the resource list.** Settings → Security → untick **Resource list** under restricted media types.
+4. **Allow fetched URLs.** On the same page, untick **Fetched URL**. You can also limit fetch to `upload.wikimedia.org` and `commons.wikimedia.org`.
+5. **AI auto-tagging (optional).** Register Google Automatic Image Tagging or Amazon Rekognition under Add-ons, then enable it in your upload preset with a confidence threshold of about 0.6.
+6. **Add the values:**
+
+```bash
+cp .env.example .env.local
+```
+
+```ini
+# .env.example
+# Your Cloudinary cloud name (Dashboard → top-left)
+VITE_CLOUDINARY_CLOUD_NAME=
+
+# An UNSIGNED upload preset (Settings → Upload → Upload presets)
+VITE_CLOUDINARY_UPLOAD_PRESET=
+
+# Folder uploads land in (optional)
+VITE_CLOUDINARY_FOLDER=namma-chennai
+```
+
+> **Never put your API key or API secret here.** Anything starting with `VITE_` is bundled into browser code. The app is designed so it never needs them.
+
+The app works without Cloudinary too. Photos fall back to Wikimedia, and the upload button explains why it's off. You can also paste a cloud name and preset under Menu → Cloudinary settings to try it in your own browser.
 
 ---
 
@@ -19,182 +153,52 @@ npm run dev
 
 Open http://localhost:5173. The first load takes a few seconds while the city is assembled in your browser.
 
-For a production build:
-
 ```bash
-npm run build      # output goes to dist/
-npm run preview    # serves dist/ at http://localhost:4173
+npm run build         # static site in dist/
+npm run preview       # serve dist/ locally
+npm run screenshots   # re-capture the README images (needs Google Chrome)
 ```
 
-`dist/` is a static site, so it can go on Netlify, Vercel, GitHub Pages, Cloudflare Pages or any static host.
+`dist/` is a plain static site, so it runs on Netlify, Vercel, GitHub Pages or Cloudflare Pages.
 
-Some useful links once it's running:
-
-| Link | Opens |
-|---|---|
-| `/#place=central` | Chennai Central and its story |
-| `/#place=kandhakottam` | The temple |
-| `/#place=home-pongal` | The Pongal house |
-| `/#studio` | The Kolam Studio |
-
----
-
-## Cloudinary setup
-
-The app works without Cloudinary. It just falls back to Wikimedia's own image thumbnails, and the upload button explains that uploads are off. To switch everything on:
-
-1. **Get your cloud name.** It's at the top left of the Cloudinary dashboard.
-2. **Create an unsigned upload preset.** Go to Settings → Upload → Upload presets → Add upload preset, set Signing mode to **Unsigned** and save. Note the preset name. While you're there you can also turn on auto-tagging or moderation for the preset.
-3. **Allow the resource list.** Settings → Security → untick "Resource list" under restricted media types. This is what lets the app show *everyone's* uploads, not just the ones made in your own browser.
-4. **Allow fetched URLs.** Same Security page: under *Restricted image types*, make sure **Fetched URL** is *unticked*. New accounts often ship with it ticked, and then every archive photo comes back with `401 – Images of type fetch are restricted`. If you want to be strict, limit fetch to `commons.wikimedia.org` and `upload.wikimedia.org`.
-
-   The app checks this when it starts. If fetch is blocked, it loads photos straight from Wikimedia so nothing breaks, and Menu → Cloudinary settings tells you what to change.
-5. **Turn on AI auto-tagging (optional, recommended).** Open your upload preset → *Media analysis and AI* → enable **Google Automatic Image Tagging** or **Amazon Rekognition Auto Tagging**, with a confidence threshold around 0.6. You first need to register the add-on (Settings → Add-ons); both have a free tier. Unsigned uploads can't ask for tagging themselves, so it has to be switched on in the preset.
-6. **Add the values to the project:**
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Fill in `VITE_CLOUDINARY_CLOUD_NAME` and `VITE_CLOUDINARY_UPLOAD_PRESET`, then restart `npm run dev`.
-
-You can also paste the two values into the app itself, under Menu → Cloudinary settings. That only saves them in your own browser, which is handy for a quick demo on someone else's laptop.
-
-**Don't put your API key or API secret in `.env.local`.** Any variable starting with `VITE_` ends up in the JavaScript that ships to the browser. The app is built so it never needs the secret.
-
-### What Cloudinary actually does here
-
-- **Every photo goes through it.** Archive photos are Wikimedia Commons originals pulled in with Cloudinary's fetch delivery. Each one is resized and cropped for wherever it appears: a 96px map pin, a square thumbnail, a story header, a full-screen view, a mobile size. All of them use `f_auto` and `q_auto`, and `g_auto` crops around the interesting part of the picture. You can see the presets at the top of `src/media/cloudinary.js`.
-- **Visitor memories are stored in it.** "Share a memory" uploads photos, videos or audio with the unsigned preset. Each upload is tagged (`namma-chennai`, the category, the festival, the place) and carries context metadata: caption, the story text, the place, and the name the person chose to show.
-- **Everyone sees everyone's uploads.** On load the app reads `/image/list/namma-chennai.json` and `/video/list/namma-chennai.json` and drops a pin for each memory next to the place it belongs to.
-- **Shared kolams travel through it too.** When you place a kolam you can share it. It uploads as a PNG with the pattern data in its metadata, so other visitors see your kolam drawn on a doorstep in their city.
-- **Videos** use Cloudinary's video delivery with automatic format and quality, and a generated poster frame.
-- **AI auto-tagging.** If the preset has auto-tagging on, every uploaded memory comes back with tags such as *oil lamp*, *cattle* or *pattern*. The app shows them on the memory ("Tagged by Cloudinary AI"). If the visitor didn't choose a festival, it uses the tags to file the memory under one: lamps and fireworks go to Deepavali, cattle, sugarcane and clay pots to Pongal, and floor patterns to Margazhi. Tags also come back through the resource list, so everyone else's memories get sorted the same way.
-- **Kolam postcards.** In the Kolam Studio, *Postcard* uploads your kolam once as a transparent PNG. Everything else on the card is built from Cloudinary transformations on that one image's URL:
-  - `c_pad` to make the 1800×1100 card in the kolam's own ground colour
-  - text layers in **Hind Madurai**, which renders Tamil correctly, and **Playfair Display**, with "Greetings from Namma Chennai", நம்ம சென்னை, a festival greeting, your name and யாதும் ஊரே யாவரும் கேளிர்
-  - a postmark for Chennai 600 003, rotated with `a_-14`
-  - a gold border (`bo_16px`)
-
-  You get one permanent URL to share on WhatsApp, copy or download. See `src/media/postcard.js`.
-- **The link preview is Cloudinary too.** The Open Graph image in `index.html` is a render of the 3D city uploaded once to the account. Cloudinary crops it to 1200×630, fades the left side to indigo with `e_gradient_fade`, and sets the title in Tamil and English with text layers. A copy is kept at `public/og.jpg`.
-
-Memories only attach to public places like the station, the temple or a market, never to a house. The upload form says so, and asks people not to include addresses or faces of people who haven't agreed.
+Deep links: `/#place=central`, `/#place=kandhakottam`, `/#place=home-pongal`, `/#studio`.
 
 ---
 
 ## What's in it
 
-### The city
-2,449 building footprints, 795 road segments, 77 railway lines, platforms, the Cooum, the Buckingham Canal and the temple tanks, all from an OpenStreetMap extract. The buildings are drawn in one pass, with a shader that adds floors, windows, rolling shop shutters and lit windows at night. Black plastic water tanks sit on the terraces, because that's what Chennai's rooftops look like.
+**The city.** Real streets and building footprints. One shader adds floors, windows, rolling shutters, lit windows at night and black water tanks on the terraces. Blocks that OSM hasn't mapped yet are filled with plain low-rise houses, and those are labelled as estimated.
 
-Where OSM has building heights we use them. Where it doesn't, we estimate from plot size.
+**Landmarks.** Chennai Central, Ripon Building, Victoria Public Hall, Southern Railway HQ, Fort St. George and **Kandha Kottam**. The temple is the centrepiece: a seven-tier gopuram with rows of tiny shrines, a lamp pillar, a flagstaff, the peacock, a pillared hall, its real tank, and flower stalls outside the gate.
 
-Large parts of Chintadripet and George Town aren't mapped in OSM yet. Left as they were, those blocks read as empty ground, which is wrong. So we fill plots that face a real lane with plain low-rise houses (about a thousand of them), and only where OSM has nothing. Hover over one and it tells you it's estimated.
+**The street.** Shop boards in Tamil and English suited to each neighbourhood, about a hundred real business names, blue Corporation street boards, autos and buses driving on the left, and suburban EMUs pulling into Central.
 
-### Landmarks
-- **Chennai Central.** The red-brick facade with its clock tower on the Wall Tax Road corner, the spired towers and turrets, the long porch and the platform sheds behind.
-- **Ripon Building.** All white, with its two inner courtyards taken from the OSM footprint, plus colonnades, a portico and a clock tower.
-- **Victoria Public Hall** and **Southern Railway Headquarters.**
-- **Kandha Kottam.** The Murugan temple on Rasappa Chetty Street, built as a complete Dravidian temple: a seven-tier gopuram with painted stucco figures and rows of tiny shrines on every tier, red-and-white striped walls, a lamp pillar, an offering stone, a gilded flagstaff, Murugan's peacock, a pillared hall and the gold tower over the sanctum. Its real tank is next to it, with a small pavilion in the middle of the water. Flower and coconut stalls stand outside the gate, along with a rack for footwear.
-- **Fort St. George's** bastions at the eastern edge.
+**Festivals.**
+- **Everyday:** a small white kolam at many doorsteps.
+- **Margazhi:** large kolams at dawn.
+- **Pongal:** pots, sugarcane, thoranams and decorated cattle.
+- **Deepavali:** lamps, star lanterns, ground crackers and fireworks.
 
-All of these are built in code from the footprints and from photographs. They're labelled as stylised reconstructions, not surveys.
+**Time and weather.** Six times of day, from dawn to night. The weather can be clear, haze, monsoon rain or a thunderstorm. In a storm, lightning strikes the tallest buildings and the thunder arrives late after each flash.
 
-### The street
-- **Shop boards** in Tamil and English, matched to the neighbourhood: steel-vessel and jewellery shops in George Town, lodges and tiffin centres around Central, flowers at Pookadai.
-- **About a hundred boards with real names.** The hotels, lodges, banks and complexes OSM knows about, and the tea stalls and restaurants it has as points, get their actual name on the facade.
-- **Blue Chennai Corporation street boards** along the roads. They're bilingual where OSM records the Tamil name.
-- **Traffic.** Autos, buses, cars and two-wheelers drive on the left, and there are people on the footpaths.
-- **Trains.** Long-distance rakes and suburban EMUs pull into Central, and EMUs run along the elevated MRTS line.
+**Step inside.**
+- **The temple at dusk.** The deity isn't shown, on purpose.
+- **A puja room before dawn on Deepavali.**
+- **A Pongal courtyard.** You can step through all four days, from Bhogi to Kaanum Pongal.
+- **A thinnai doorstep.** A kolam draws itself on the washed threshold.
 
-### The metro
-Press "Metro" to fade the ground and look underneath. The **Blue Line** (Airport ⇄ Wimco Nagar) and **Green Line** (Central ⇄ St Thomas Mount) run in tunnels and meet at Central Metro. High Court station sits at the George Town edge. The 4-car trains move through them.
+**Kolam Studio.**
+- **Mirror-curve sikku kolams,** with a search that finds a pattern drawn as one unbroken line.
+- **Drawing tools:** freehand and dot-to-dot, with symmetry tools.
+- **Presets:** 13, each labelled honestly as a traditional form or our own design.
+- **Playback** of how the kolam is drawn.
+- **Export** as PNG or SVG.
+- **Place it on a doorstep** in the city.
+- **Postcards**, made by Cloudinary.
 
-The real street entrances are on the map with bilingual signs: S3, S4 and B5 near Central, A2 and A3 at High Court. The tunnel routes come from OSM, but the depths are our guess.
+**The film.** A two-minute guided tour across all of it. You can skip a shot or leave at any time.
 
-The Phase 2 lines, including the Red Line, are still being built in other parts of the city and don't come through here, so they're not shown.
-
-### Festivals
-- **Everyday.** A morning with a small white kolam at many doorsteps.
-- **Margazhi.** Dawn, with large kolams spilling out into the lanes and a tanpura drone if sound is on.
-- **Pongal.** Golden morning light. A clay pot, sugarcane and a coloured kolam at the doors, a mango-leaf and marigold thoranam on the story houses, and decorated cattle standing in the lane outside the Pongal house.
-- **Deepavali.** Night, with clay lamps on the thresholds, strings of lights down the facades and paper star lanterns. Flower-pot crackers, ground spinners and sparklers go off in the lanes, and there are fireworks over the open grounds. Fireworks can be turned down or off in the menu.
-
-### Time and weather
-- **Time of day:** dawn, morning, summer noon, golden morning, evening and night. Festivals set their own default time.
-- **Weather:** clear, summer haze, monsoon rain or thunderstorm.
-- **Rain** darkens the sky, wets the roads so they turn glossy, rings the ground with ripples and lays a veil of streaks over the whole view.
-- **Storms** add a darker cloud deck, branching lightning that tends to strike the tall things (the gopuram, Central's clock tower, the tallest blocks) and thunder that arrives late after each flash.
-
-### Step inside
-Press **Step inside** at the bottom left, or the button at the top of any story with a door badge. There are four scenes:
-
-- **Kandha Kottam at dusk.** Walk in through the gopuram, past the lamp pillar, the flagstaff and the peacock, towards the sanctum. The deity isn't shown, on purpose.
-- **Deepavali before dawn.** A puja room at 4:30 in the morning: a tall brass lamp, a framed உ and ஓம் hung with jasmine and marigold, a kolam ringed with clay lamps, sweets, new silks, the bowl of oil for the early-morning oil bath (Ganga snanam), and a flower-pot cracker going off outside the door.
-- **The Pongal courtyard.** The pot boiling over on a wood fire in an open courtyard, sugarcane, a banana-leaf meal, and a cattle shed with Kangayam cattle dressed for Mattu Pongal. Buttons step through the four days, Bhogi to Kaanum Pongal.
-- **A morning at the doorstep.** The raised sit-out (thinnai) and the studded teak door, where a kolam draws itself on the washed threshold.
-
-Every scene has numbered markers that explain what you're looking at.
-
-### Kolam Studio
-Sikku (looped-line) kolams are worked out with **mirror curves**, the same model mathematicians use to study them:
-- The line moves diagonally between the dots and either crosses or bounces wherever you place a "mirror" between two dots.
-- A search finds mirror layouts that make the whole kolam **one unbroken line**, the kambi form.
-- Press "Weave a one-line kolam" for a new pattern on whatever grid you have.
-
-Beyond that, the Studio has:
-- **Drawing:** freehand and dot-to-dot tools, mirror and rotational symmetry, undo and redo.
-- **Patterns:** 13 presets labelled honestly as either "Traditional form" or "Original design".
-- **Playback:** step-by-step, with play, pause, step, speed and scrubbing.
-- **Export:** PNG, SVG and the raw pattern file.
-- **Place on a doorstep:** puts your kolam on a doorstep in the city.
-- **Postcard:** turns your kolam into a shareable Cloudinary postcard with a Tamil greeting for the current festival.
-
-### The film
-Press **Watch the film** (bottom left, or on the welcome card) for a two-minute guided showreel. It runs in letterbox with Tamil and English subtitles and covers:
-- Central, Ripon Building and Victoria Hall, the metro underneath, the temple, the George Town streets and the Fort
-- Margazhi, Pongal, a monsoon storm and Deepavali fireworks
-- a walk into the temple and a Deepavali home
-- the Kolam Studio drawing a single-line kolam
-
-You can skip to the next shot or leave at any time, and the city goes back to how you left it.
-
-### And the rest
-- Guided journeys
-- "Discover a tradition", which picks a story you haven't seen yet
-- Then & Now photo comparisons, using genuine old photographs only
-- An atlas of places too far away for the map (Mylapore, Kanchipuram, Thanjavur and others), plotted to scale
-- Search across stories, buildings, streets and shops
-- A soundscape made in the browser: city hum, train horns, temple bells, rain and thunder
-- Keyboard controls, a reduced-motion setting and a mobile layout
-
----
-
-## How it's built
-
-| Piece | What we used | Why |
-|---|---|---|
-| 3D | **Three.js** (r169) | Full control over geometry and shaders. Nearly everything is generated in code. There are no downloaded 3D models. |
-| Animation | **GSAP** | Camera moves, festival changes, lightning timing. |
-| Build | **Vite** | Fast dev server and a static build. |
-| Map data | **OpenStreetMap**, preprocessed by `scripts/build-geo.mjs` | Real streets and footprints, turned into a ~450 KB JSON file. |
-| Media | **Cloudinary**: fetch, upload, resource list, video | Every image the app shows, plus everything visitors add. |
-| Archive photos | **Wikimedia Commons** | Openly licensed, with author and licence shown next to every image. |
-| Sound | **Web Audio API** | Generated in the browser, no recordings. |
-| Fonts | Fraunces, Hind Madurai, Noto Serif Tamil | Hind Madurai covers Tamil and Latin in one family. Noto Serif Tamil is for Tamil headings. |
-
-No framework, no backend. It's plain JavaScript modules and one HTML file.
-
-A few techniques that may be worth reading:
-
-- **`src/world/buildings.js`:** all the buildings in one mesh. One shader paints floors, windows, shutters and night lights, and a lookup table turns a clicked triangle back into the OSM building it came from.
-- **`src/world/temple.js`:** the temple is built from the actual vocabulary of Tamil temple architecture: the granite base, the tiers, the projecting cornices, and the three kinds of miniature shrine along each parapet (square domed ones at the corners, barrel-roofed ones at the middle, small ones between). The miniature shrines are instanced.
-- **`src/kolam/engine.js`:** the mirror-curve tracer, plus the search for single-line kolams. It opens up mirrors only where that joins two separate loops into one, while keeping the pattern symmetrical.
-- **`src/world/weather.js`:** at diorama distance a real raindrop is smaller than a pixel. So rain is a screen-space pass of streaks at three depths, combined with wet materials, ripples on the ground and a cloud layer that the lightning lights up.
-- **`src/world/environment.js`:** festival, time of day and weather are combined into one lighting state, and changes animate through it. Festival decorations spread outward from wherever you're looking.
-
-Performance: about 1.9 million triangles on screen. Tree detail drops with distance, and the trees, traffic, lamps and decorations are all instanced. Quality steps down on its own for phones; you can override it in the menu.
+**And more.** Guided journeys and Then & Now photo pairs. An atlas of places beyond the map. Search across everything. A browser-made soundscape, keyboard controls, a reduced-motion setting and a full mobile layout.
 
 ---
 
@@ -202,44 +206,59 @@ Performance: about 1.9 million triangles on screen. Tree detail drops with dista
 
 We cared about this, so here it is plainly.
 
-- **Real:** the street layout, the building footprints, the railway, the platforms, the river and canal, the temple tanks, the metro tunnels and entrances, and the names of buildings, shops and streets. The extract was taken from OpenStreetMap in November 2026.
-- **Estimated:** building heights where OSM doesn't give them, and the infill houses in unmapped blocks (these are labelled). Windows, shutters and water tanks are procedural.
-- **Stylised:** every landmark, including the temple. They follow the real thing's character, not its measurements.
-- **Illustrative:** the three family homes. Their stories are composites written for this project, and every one is marked as such. No real family or address is shown.
-- **Left out on purpose:** the deity inside the sanctum; the proposed high-speed rail station that appears in OSM; and metro lines that aren't built yet.
-- **Generated:** the sound is synthesised. Kolams marked "Traditional form" use a traditional grid and drawing rule with a computer-found route. "Original design" means we drew it.
+- **Real:** street layout, building footprints, railway, river, canal, temple tanks, metro tunnels and entrances, and the names of buildings, shops and streets. Taken from OpenStreetMap in November 2026.
+- **Estimated:** building heights where OSM has none, and the infill houses (labelled).
+- **Stylised:** every landmark. Each one follows the real building's character, not its measurements.
+- **Illustrative:** the family homes. Their stories are composites, and each one is marked as such. No real family or address is shown.
+- **Left out on purpose:** the deity in the sanctum, the proposed high-speed rail station, and metro lines that aren't built yet.
+- **Privacy:** memories attach only to public places, never to houses.
 
 ---
 
 ## Project layout
 
 ```
-index.html              the page and all UI markup
+index.html              page, UI markup, SEO and Open Graph tags
 src/
   main.js               boots everything and wires the UI
-  core/                 renderer, camera, post-processing; shared state
-  world/                city geometry, landmarks, temple, metro, traffic, weather, festivals, signs
-  interior/             the step-inside scenes and their props
+  core/                 renderer, camera, post-processing
+  world/                city, landmarks, temple, metro, traffic, weather, festivals, signs
+  interior/             the step-inside scenes
   kolam/                kolam engine, presets, studio
-  content/              places, stories, tours, verses; the media registry
-  media/cloudinary.js   delivery presets, uploads, resource list
+  content/              places, stories, tours, media registry
+  media/                Cloudinary delivery, uploads, postcards
   audio/                the soundscape
-  ui/                   story panel, pins, search, modals
-scripts/build-geo.mjs   OSM extract → public/data/city.json
-data/map.osm            the raw OpenStreetMap extract
+  ui/                   story panel, pins, search, modals, film
+scripts/
+  build-geo.mjs         OSM extract → public/data/city.json
+  screenshots.mjs       Playwright capture for this README
 ```
 
-To rebuild the city data after changing the extract:
+---
 
-```bash
-node scripts/build-geo.mjs
-```
+## Developer
+
+<table>
+  <tr>
+    <td width="120" align="center">
+      <img src="https://github.com/prodhosh.png" width="100" alt="Prodhosh">
+    </td>
+    <td>
+      <b>Prodhosh VS</b><br>
+      Designed and built Namma Chennai.<br><br>
+      🌐 <a href="https://prodhosh.me">prodhosh.me</a> &nbsp;·&nbsp;
+      💼 <a href="https://www.linkedin.com/in/prodhoshvs">linkedin.com/in/prodhoshvs</a> &nbsp;·&nbsp;
+      🐙 <a href="https://github.com/prodhosh">github.com/prodhosh</a>
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## Credits
 
 - Map data © OpenStreetMap contributors, under the Open Database License.
-- Photographs and video from Wikimedia Commons. Each one is credited where it appears, and the full list is in Menu → About and in `src/content/media.js`.
+- Photographs from Wikimedia Commons, each credited where it appears. The full list is in `src/content/media.js`.
 - Fonts under the SIL Open Font License.
-- யாதும் ஊரே யாவரும் கேளிர் — every town is our town, everyone our kin. (Kaniyan Pungundranar, Purananuru 192)
+
+<p align="center"><i>யாதும் ஊரே யாவரும் கேளிர்</i><br><sub>Every town is our town, everyone our kin. (Kaniyan Pungundranar, Purananuru 192)</sub></p>

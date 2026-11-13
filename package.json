@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite --port 5173",
     "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.5",
     "three": "^0.169.0"
   },
   "devDependencies": {
+    "playwright-core": "^1.48.2",
     "vite": "^5.4.10"
   }
 }
