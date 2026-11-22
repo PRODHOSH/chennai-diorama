@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namma Chennai · Project Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Hind+Madurai:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 18mm 15mm 20mm; }
+  :root { --ink:#1b2040; --red:#b4553a; --gold:#c9a24a; --paper:#fbf7f0; --muted:#5d5a66; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:'Hind Madurai',sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.55; }
+  h1,h2,h3 { font-family:'Fraunces',serif; font-weight:600; line-height:1.15; margin:0; }
+  h2 { font-size:21pt; margin:0 0 2mm; }
+  h2 .ta { display:block; font-family:'Hind Madurai'; font-size:11pt; color:var(--red); font-weight:600; margin-top:1mm; }
+  h3 { font-size:12.5pt; margin:5mm 0 1.5mm; }
+  p { margin:0 0 2.5mm; }
+  .page { page-break-after: always; border:1.2pt solid var(--gold); outline:0.5pt solid var(--gold); outline-offset:1.2mm; padding:9mm 9mm 7mm; height:250mm; overflow:hidden; position:relative; background:#fff; }
+  .page:last-child { page-break-after:auto; }
+  .kicker { font-size:8pt; letter-spacing:2.5pt; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:2mm; }
+  .lead { font-family:'Fraunces',serif; font-size:12.5pt; color:#2c2f4a; margin-bottom:4mm; }
+  figure { margin:0 0 3mm; }
+  figure img { width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; display:block; border-radius:2mm; border:0.6pt solid #e3d9c6; }
+  figcaption { font-size:8.5pt; color:var(--muted); margin-top:1.2mm; }
+  .g2 { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; }
+  .g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+  ul { margin:0 0 3mm; padding-left:5mm; } li { margin-bottom:1mm; }
+  table { width:100%; border-collapse:collapse; font-size:9pt; margin:2mm 0 4mm; }
+  th { text-align:left; background:var(--ink); color:#f4ecdf; padding:1.8mm 2.5mm; font-weight:600; }
+  td { padding:1.8mm 2.5mm; border-bottom:0.5pt solid #e6dccb; vertical-align:top; }
+  tr:nth-child(even) td { background:#faf6ee; }
+  code { font-size:8.5pt; background:#f3ede2; padding:0.3mm 1.2mm; border-radius:1mm; }
+  .note { background:var(--paper); border-left:2pt solid var(--gold); padding:2.5mm 3.5mm; font-size:9.5pt; margin:3mm 0; }
+  .meaning { background:#fff7ec; border:0.6pt solid #f0dcc0; border-radius:2mm; padding:2.5mm 3.5mm; font-size:9.5pt; margin:2mm 0 3mm; }
+  .meaning b { color:var(--red); }
+  /* cover */
+  .cover { background:var(--ink); color:#f4ecdf; border-color:var(--gold); display:flex; flex-direction:column; padding:0; overflow:hidden; }
+  .cover img.hero { width:100%; height:128mm; object-fit:cover; display:block; }
+  .cover .in { padding:10mm 12mm; flex:1; display:flex; flex-direction:column; }
+  .cover .ta { font-family:'Hind Madurai'; font-weight:600; font-size:34pt; color:var(--gold); line-height:1.2; }
+  .cover h1 { font-size:36pt; color:#f4ecdf; margin:1mm 0 3mm; }
+  .cover .sub { font-size:12pt; color:#d9d2c4; max-width:150mm; }
+  .cover .meta { margin-top:auto; display:flex; justify-content:space-between; font-size:9pt; color:#cfc6b4; border-top:0.6pt solid #4a4f72; padding-top:4mm; }
+  .cover .meta b { color:#f4ecdf; }
+  .toc { columns:2; column-gap:10mm; font-size:10.5pt; }
+  .toc div { display:flex; justify-content:space-between; border-bottom:0.5pt dotted #cdbf9f; padding:1.6mm 0; break-inside:avoid; }
+  .toc span:last-child { color:var(--red); font-weight:600; }
+  .dev { display:flex; gap:6mm; align-items:center; margin-top:4mm; }
+  .dev img { width:28mm; height:28mm; border-radius:50%; border:1.5pt solid var(--gold); }
+  .phones img { border-radius:4mm; aspect-ratio:390/844; }
+  .full img, .page > figure img { aspect-ratio:16/8.2; }
+  .cover img.hero { aspect-ratio:auto !important; }
+  .tight figure img { aspect-ratio:16/9.2; }
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="page cover">
+  <img class="hero" src="shots/hero-golden.jpg">
+  <div class="in">
+    <div class="kicker" style="color:var(--gold)">Project guide · Cloudinary hackathon submission</div>
+    <div class="ta">நம்ம சென்னை</div>
+    <h1>Namma Chennai</h1>
+    <p class="sub">A living 3D miniature of central Chennai. Built from real map data, with temples you can walk into, festivals that change the city, and kolams you can draw and share.</p>
+    <div class="meta">
+      <div><b>Live</b><br>chennai-diorama.pages.dev</div>
+      <div><b>Code</b><br>github.com/PRODHOSH/chennai-diorama</div>
+      <div><b>By</b><br>Prodhosh VS · prodhosh.me</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 CONTENTS + WHY -->
+<section class="page">
+  <div class="kicker">Contents</div>
+  <h2>What's inside</h2>
+  <div class="toc" style="margin:3mm 0 5mm">
+    <div><span>Why we built this</span><span>2</span></div>
+    <div><span>Getting started</span><span>3</span></div>
+    <div><span>The city</span><span>4</span></div>
+    <div><span>Landmarks and their stories</span><span>5</span></div>
+    <div><span>Then and now</span><span>6</span></div>
+    <div><span>Four festivals</span><span>7</span></div>
+    <div><span>Deepavali night</span><span>8</span></div>
+    <div><span>Time of day and weather</span><span>9</span></div>
+    <div><span>The metro underneath</span><span>10</span></div>
+    <div><span>Step inside: the temple</span><span>11</span></div>
+    <div><span>Step inside: festival homes</span><span>12</span></div>
+    <div><span>Kolam Studio</span><span>13</span></div>
+    <div><span>Kolam postcards</span><span>14</span></div>
+    <div><span>Explore: menu, search, journeys</span><span>15</span></div>
+    <div><span>Atlas, glossary and memories</span><span>16</span></div>
+    <div><span>The film</span><span>17</span></div>
+    <div><span>On your phone</span><span>18</span></div>
+    <div><span>How Cloudinary powers it</span><span>19</span></div>
+    <div><span>Tech stack and architecture</span><span>20</span></div>
+    <div><span>What's real and what isn't</span><span>21</span></div>
+    <div><span>About the developer</span><span>22</span></div>
+  </div>
+  <div class="kicker">Why we built this</div>
+  <h2>A map shows where things are.<br>It doesn't show what happens there.</h2>
+  <p class="lead">A normal map of Chennai will show you a railway station and a temple. It won't show you a grandmother drawing a kolam at five in the morning, a pot of Pongal boiling over, or a whole street lit with clay lamps on Deepavali.</p>
+  <p>Namma Chennai ("our Chennai") is our attempt to put that culture back on the map. We took about two kilometres of the old city around Chennai Central, which covers Park Town, George Town, Periamet and Chintadripet, and rebuilt it in 3D from real OpenStreetMap data. Then we filled it with the things that make it Chennai: its landmarks and their history, its festivals, its homes, its kolams and its sounds.</p>
+  <p>Everything is in English and Tamil. Nothing is made up without being labelled as such. And every photograph, upload and postcard goes through Cloudinary.</p>
+  <div class="note"><b>Try it now:</b> open <b>chennai-diorama.pages.dev</b> and press <b>Watch the film</b> at the bottom left for a two minute tour of everything in this guide.</div>
+</section>
+
+<!-- 3 GETTING STARTED -->
+<section class="page">
+  <div class="kicker">Getting started</div>
+  <h2>Opening the city<span class="ta">நகரத்தைத் திறத்தல்</span></h2>
+  <p class="lead">The city is assembled live in your browser while a kolam draws itself, then a welcome card shows you around.</p>
+  <div class="g2">
+    <figure><img src="shots/loader.jpg"><figcaption>The loader draws a kolam while about 2,400 buildings are built.</figcaption></figure>
+    <figure><img src="shots/welcome.jpg"><figcaption>The welcome card: explore, step inside, or watch the film.</figcaption></figure>
+  </div>
+  <figure><img src="shots/overview.jpg" style="aspect-ratio:16/7.4"><figcaption>The main view. Festival switcher at the top, Kolam Studio and menu at the top right, film and Step inside at the bottom left, metro, sky and sound at the bottom right.</figcaption></figure>
+  <table>
+    <tr><th>Control</th><th>What it does</th></tr>
+    <tr><td>Drag, scroll, pinch</td><td>Pan, zoom and rotate the city. Buttons at the bottom left do the same.</td></tr>
+    <tr><td>Click a pin</td><td>Flies to the place and opens its story.</td></tr>
+    <tr><td>Keys 1 to 4, Esc</td><td>Switch festivals; Esc closes whatever is open.</td></tr>
+  </table>
+</section>
+
+<!-- 4 CITY -->
+<section class="page">
+  <div class="kicker">The city</div>
+  <h2>Real streets, built in code<span class="ta">உண்மையான தெருக்கள்</span></h2>
+  <p class="lead">2,449 building footprints, 795 road segments, 77 railway lines, the Cooum river, the Buckingham Canal and the temple tanks. All from OpenStreetMap.</p>
+  <figure class="full"><img src="shots/city-wide.jpg" style="aspect-ratio:16/7.4"><figcaption>The full extract, from Fort St. George in the east to Chintadripet in the west.</figcaption></figure>
+  <div class="g2">
+    <figure><img src="shots/streets.jpg"><figcaption>About a hundred hotels, lodges and shops carry their real names from OSM.</figcaption></figure>
+    <figure><img src="shots/hover.jpg"><figcaption>Hover over a building or pin to see what it is.</figcaption></figure>
+  </div>
+  <ul>
+    <li><b>One shader paints every building:</b> floors, windows, rolling shop shutters, lit windows at night, and the black water tanks on every terrace.</li>
+    <li><b>Shop boards</b> in Tamil and English suit each neighbourhood: steel vessels in George Town, lodges near Central, flowers at Pookadai.</li>
+    <li><b>Traffic</b> drives on the left, trains pull into Central, and unmapped blocks are filled with labelled estimated houses.</li>
+  </ul>
+</section>
+
+<!-- 5 LANDMARKS -->
+<section class="page">
+  <div class="kicker">Landmarks</div>
+  <h2>Every landmark has a story<span class="ta">ஒவ்வொரு இடத்திற்கும் ஒரு கதை</span></h2>
+  <p class="lead">Twenty places, each with researched history, real archive photographs credited to their authors, and quick facts.</p>
+  <figure class="full"><img src="shots/story-central.jpg"><figcaption>Chennai Central, opened 1873. The story panel opens beside the 3D model.</figcaption></figure>
+  <div class="g2">
+    <figure><img src="shots/story-fort.jpg"><figcaption>Fort St. George, 1644: where Madras began.</figcaption></figure>
+    <figure><img src="shots/ripon.jpg"><figcaption>Ripon Building, home of the Greater Chennai Corporation.</figcaption></figure>
+  </div>
+  <p>Places include Chennai Central, Ripon Building, Victoria Public Hall, Southern Railway HQ, Moore Market, Fort St. George, People's Park, Memorial Hall, Kandha Kottam and its tank, the Government College of Fine Arts, Chintadripet's weavers, filter kaapi and Pookadai's flower market.</p>
+</section>
+
+<!-- 6 THEN AND NOW -->
+<section class="page">
+  <div class="kicker">Stories, deeper</div>
+  <h2>Then and now, photos and essays<span class="ta">அன்றும் இன்றும்</span></h2>
+  <p class="lead">Only genuine historical photographs are used for comparisons. Drag across to see a century of change.</p>
+  <div class="g2">
+    <figure><img src="shots/story-thennow.jpg"><figcaption>Chennai Central around 1880, before the clock tower.</figcaption></figure>
+    <figure><img src="shots/lightbox.jpg"><figcaption>Every photo opens full screen, with author and licence.</figcaption></figure>
+    <figure><img src="shots/story-temple.jpg"><figcaption>"How to read a Tamil temple": gopuram, prakaram, flagstaff, peacock, sanctum.</figcaption></figure>
+    <figure><img src="shots/story-kaapi.jpg"><figcaption>Everyday culture too: how filter kaapi is made, step by step.</figcaption></figure>
+  </div>
+  <div class="meaning"><b>Meaning.</b> Kandha Kottam is a Murugan temple on Rasappa Chetty Street in Park Town, linked to the poet saint Vallalar. Its tank, like every temple tank, once stored the neighbourhood's water.</div>
+</section>
+
+<!-- 7 FESTIVALS -->
+<section class="page">
+  <div class="kicker">Festivals</div>
+  <h2>One city, four moods<span class="ta">நான்கு திருவிழாக்கள்</span></h2>
+  <p class="lead">The switcher at the top changes the whole city: its light, decorations, doorsteps and sound.</p>
+  <div class="g2">
+    <figure><img src="shots/fest-everyday.jpg"><figcaption><b>Everyday.</b> A small white kolam at many doorsteps.</figcaption></figure>
+    <figure><img src="shots/fest-margazhi.jpg"><figcaption><b>Margazhi.</b> Dawn, with large kolams spilling into the lanes.</figcaption></figure>
+    <figure><img src="shots/fest-pongal.jpg"><figcaption><b>Pongal.</b> Clay pots, sugarcane, thoranams and coloured kolams.</figcaption></figure>
+    <figure><img src="shots/fest-deepavali-street.jpg"><figcaption><b>Deepavali.</b> Clay lamps on thresholds and lights down the facades.</figcaption></figure>
+  </div>
+  <div class="meaning"><b>Margazhi</b> (mid December to mid January) is the month of the biggest kolams, drawn before sunrise. <b>Thai Pongal</b> is the harvest festival: new rice boiled until it overflows, a sign of plenty. <b>Deepavali</b> begins before dawn with an oil bath, new clothes and lamps at every door.</div>
+</section>
+
+<!-- 8 DEEPAVALI -->
+<section class="page">
+  <div class="kicker">Festivals</div>
+  <h2>Deepavali night<span class="ta">தீபாவளி இரவு</span></h2>
+  <figure><img src="shots/fest-deepavali.jpg"><figcaption>Fireworks over the open grounds, ground crackers and sparklers in the lanes. You can turn fireworks down or off in the menu.</figcaption></figure>
+  <p>Fireworks are real particle systems with several burst types: peony, ring, willow and crossette. Flower-pot crackers and ground spinners go off at doorsteps. Paper star lanterns hang in windows. The festival decorations spread outward from wherever you are looking, so the change feels like the city lighting up around you.</p>
+</section>
+
+<!-- 9 SKY -->
+<section class="page tight">
+  <div class="kicker">Time and weather</div>
+  <h2>From dawn to a monsoon storm<span class="ta">நேரமும் வானிலையும்</span></h2>
+  <div class="g2">
+    <figure><img src="shots/sky-panel.jpg"><figcaption>The sky panel: six times of day, four kinds of weather.</figcaption></figure>
+    <figure><img src="shots/time-dawn.jpg"><figcaption>Dawn.</figcaption></figure>
+    <figure><img src="shots/time-noon.jpg"><figcaption>Summer noon with haze.</figcaption></figure>
+    <figure><img src="shots/time-night.jpg"><figcaption>Night: windows light up across the city.</figcaption></figure>
+    <figure><img src="shots/weather-rain.jpg"><figcaption>Monsoon rain: roads turn glossy and ripple.</figcaption></figure>
+    <figure><img src="shots/weather-storm.jpg"><figcaption>Thunderstorm: lightning strikes the tallest buildings.</figcaption></figure>
+  </div>
+  <p>Rain is drawn as a screen-space effect at three depths, because at this scale a real raindrop would be smaller than a pixel. Thunder arrives a moment after each flash, like it does in real life.</p>
+</section>
+
+<!-- 10 METRO -->
+<section class="page">
+  <div class="kicker">Underground</div>
+  <h2>The metro under your feet<span class="ta">நகரின் கீழ் ஒரு நகரம்</span></h2>
+  <figure><img src="shots/metro.jpg"><figcaption>Metro x-ray: the ground fades and the Blue and Green Line tunnels appear beneath Central.</figcaption></figure>
+  <ul>
+    <li><b>Blue Line:</b> Airport to Wimco Nagar. <b>Green Line:</b> Central to St Thomas Mount. Both meet at Central Metro.</li>
+    <li>Real street entrances with bilingual signs: S3, S4 and B5 near Central, A2 and A3 at High Court.</li>
+    <li>Four-car trains run through the tunnels.</li>
+    <li>Phase 2 lines (including the Red Line) are being built elsewhere and don't pass through here, so they are honestly left out.</li>
+  </ul>
+</section>
+
+<!-- 11 TEMPLE INSIDE -->
+<section class="page">
+  <div class="kicker">Step inside</div>
+  <h2>Kandha Kottam at dusk<span class="ta">அந்தியில் கந்த கோட்டம்</span></h2>
+  <div class="g2">
+    <figure><img src="shots/temple-aerial.jpg"><figcaption>The temple from above: seven-tier gopuram, kaavi-striped walls.</figcaption></figure>
+    <figure><img src="shots/inside-picker.jpg"><figcaption>Step inside: four places you can walk into.</figcaption></figure>
+  </div>
+  <figure><img src="shots/inside-temple.jpg"><figcaption>Inside the courtyard. Drag to look around. Numbered markers explain each element.</figcaption></figure>
+  <div class="meaning"><b>Rajagopuram</b> is the gateway tower. <b>Deepasthambam</b> is the lamp pillar, <b>kodimaram</b> the gilded flagstaff, <b>mayil</b> Murugan's peacock. The <b>vimanam</b> rises over the sanctum. The deity is deliberately not shown, out of respect.</div>
+</section>
+
+<!-- 12 HOMES -->
+<section class="page">
+  <div class="kicker">Step inside</div>
+  <h2>Festival homes<span class="ta">பண்டிகை வீடுகள்</span></h2>
+  <div class="g2">
+    <figure><img src="shots/inside-deepavali.jpg"><figcaption><b>Deepavali before dawn.</b> A puja room at 4:30 am: brass lamp, kolam ringed with agal lamps, sweets, oil for the Ganga snanam bath.</figcaption></figure>
+    <figure><img src="shots/inside-pongal.jpg"><figcaption><b>Thai Pongal.</b> The pot boils over on a wood fire in the courtyard.</figcaption></figure>
+    <figure><img src="shots/inside-mattu.jpg"><figcaption><b>Mattu Pongal.</b> Kangayam cattle with painted horns. Buttons step through all four days.</figcaption></figure>
+    <figure><img src="shots/inside-kolam.jpg"><figcaption><b>A morning at the vaasal.</b> A kolam draws itself on the washed threshold beside the thinnai.</figcaption></figure>
+  </div>
+  <div class="meaning"><b>The four days of Pongal:</b> Bhogi (clearing out the old), Thai Pongal (boiling new rice), Mattu Pongal (honouring cattle), Kaanum Pongal (visiting family; in Chennai, the Marina fills up). These homes are illustrative composites, not real families.</div>
+</section>
+
+<!-- 13 STUDIO -->
+<section class="page">
+  <div class="kicker">Kolam Studio</div>
+  <h2>Draw a kolam, the real way<span class="ta">கோலம் வரையுங்கள்</span></h2>
+  <figure><img src="shots/studio.jpg"><figcaption>The studio: a pattern book on the left, the canvas in the middle, dots, symmetry and colour on the right.</figcaption></figure>
+  <div class="g2">
+    <figure><img src="shots/studio-drawing.jpg"><figcaption>Playback shows how the kolam is drawn, stroke by stroke.</figcaption></figure>
+    <figure><img src="shots/studio-weave.jpg"><figcaption>"Weave a one-line kolam" finds a brand new single-line pattern.</figcaption></figure>
+  </div>
+  <div class="meaning"><b>The maths.</b> Sikku kolams loop around a grid of dots. We model them as <b>mirror curves</b>: the line travels diagonally and bounces off mirrors placed between dots. A search finds mirror layouts that turn the whole pattern into <b>one unbroken line</b>, the traditional kambi form.</div>
+</section>
+
+<!-- 14 POSTCARD -->
+<section class="page">
+  <div class="kicker">Kolam Studio · Cloudinary</div>
+  <h2>From kolam to postcard<span class="ta">கோல அஞ்சல் அட்டை</span></h2>
+  <figure><img src="../screenshots/postcard.jpg"><figcaption>A real postcard made by the app. Everything except the kolam itself is a Cloudinary transformation.</figcaption></figure>
+  <div class="g2">
+    <figure><img src="shots/studio-export.jpg"><figcaption>Export as PNG, SVG or pattern file, or press Postcard.</figcaption></figure>
+    <figure><img src="shots/fest-margazhi.jpg"><figcaption>"Place on a doorstep" puts your kolam into the streets of the city.</figcaption></figure>
+  </div>
+  <table>
+    <tr><th>Transformation</th><th>Purpose</th></tr>
+    <tr><td><code>c_pad,w_1800,h_1100</code></td><td>Turns the kolam into a postcard in its own ground colour</td></tr>
+    <tr><td><code>l_text:Hind Madurai…</code></td><td>Tamil and English greeting, title and your name</td></tr>
+    <tr><td><code>a_-14</code></td><td>Tilts the "CHENNAI · 600 003" postmark</td></tr>
+    <tr><td><code>bo_16px_solid</code></td><td>The gold border</td></tr>
+  </table>
+</section>
+
+<!-- 15 EXPLORE -->
+<section class="page">
+  <div class="kicker">Explore</div>
+  <h2>Menu, search and journeys<span class="ta">ஆராயுங்கள்</span></h2>
+  <div class="g2">
+    <figure><img src="shots/menu.jpg"><figcaption>The menu: film, step inside, discover, journeys, places, atlas, time travel, words, settings.</figcaption></figure>
+    <figure><img src="shots/search.jpg"><figcaption>Search across stories, buildings, streets and shops.</figcaption></figure>
+    <figure><img src="shots/tours.jpg"><figcaption>Guided journeys: heritage, household traditions, kolam, food, music and making.</figcaption></figure>
+    <figure><img src="shots/tour-running.jpg"><figcaption>A journey in progress, stop by stop.</figcaption></figure>
+  </div>
+  <figure><img src="shots/places.jpg" style="aspect-ratio:16/5.5"><figcaption>All places, grouped by category.</figcaption></figure>
+</section>
+
+<!-- 16 ATLAS ETC -->
+<section class="page">
+  <div class="kicker">Explore</div>
+  <h2>Beyond the map<span class="ta">வரைபடத்திற்கு அப்பால்</span></h2>
+  <div class="g2">
+    <figure><img src="shots/atlas.jpg"><figcaption>The atlas: Mylapore, Kanchipuram, Thanjavur, Swamimalai and more, plotted to scale.</figcaption></figure>
+    <figure><img src="shots/timetravel.jpg"><figcaption>Time travel: then and now photo pairs.</figcaption></figure>
+    <figure><img src="shots/words.jpg"><figcaption>Words: a Tamil glossary and classic verses.</figcaption></figure>
+    <figure><img src="shots/contribute.jpg"><figcaption>Share a memory: upload to Cloudinary, tagged to a public place.</figcaption></figure>
+  </div>
+  <div class="g2">
+    <figure><img src="shots/cloudinary-settings.jpg"><figcaption>Cloudinary settings show connection status.</figcaption></figure>
+    <figure><img src="shots/about.jpg"><figcaption>About, credits and every photo licence.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 17 FILM -->
+<section class="page">
+  <div class="kicker">The film</div>
+  <h2>Two minutes, everything<span class="ta">ஒரு குறும்படம்</span></h2>
+  <p class="lead">Press "Watch the film" for a 15-shot guided tour in letterbox, with Tamil and English subtitles. Skip or exit at any time; the city returns to how you left it.</p>
+  <figure class="full"><img src="shots/film-open.jpg"><figcaption>The opening title.</figcaption></figure>
+  <div class="g2">
+    <figure><img src="shots/film-temple.jpg"><figcaption>Shot 5: Kandha Kottam.</figcaption></figure>
+    <figure><img src="shots/film-monsoon.jpg"><figcaption>Shot 10: the monsoon.</figcaption></figure>
+  </div>
+  <p>The shots: opening, Chennai Central, Ripon and Victoria Hall, the metro, the temple, the streets, the Fort, Margazhi, Pongal, monsoon, Deepavali, inside the temple, inside a home, the Kolam Studio, and the end card.</p>
+</section>
+
+<!-- 18 MOBILE -->
+<section class="page">
+  <div class="kicker">Mobile</div>
+  <h2>Made for phones too<span class="ta">கைபேசியில்</span></h2>
+  <p class="lead">A full mobile layout with touch controls. Quality steps down automatically on phones.</p>
+  <div class="g4 phones">
+    <figure><img src="shots/m-city.jpg"><figcaption>The city.</figcaption></figure>
+    <figure><img src="shots/m-story.jpg"><figcaption>A story.</figcaption></figure>
+    <figure><img src="shots/m-inside.jpg"><figcaption>Step inside.</figcaption></figure>
+    <figure><img src="shots/m-studio.jpg"><figcaption>Kolam Studio.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 19 CLOUDINARY -->
+<section class="page">
+  <div class="kicker">Cloudinary</div>
+  <h2>How Cloudinary powers it</h2>
+  <p class="lead">There's no backend. The browser talks to Cloudinary directly, using only a cloud name and an unsigned upload preset, so no secret is ever exposed.</p>
+  <table>
+    <tr><th style="width:24%">Feature</th><th style="width:26%">Cloudinary capability</th><th>How we use it</th></tr>
+    <tr><td><b>Archive photos</b></td><td>Fetch delivery, f_auto, q_auto, g_auto</td><td>80+ Wikimedia photos sized for pins, thumbnails, headers and full screen, cropped around the subject.</td></tr>
+    <tr><td><b>Responsive images</b></td><td>Width transforms in srcset</td><td>Phones download small files automatically.</td></tr>
+    <tr><td><b>Visitor memories</b></td><td>Unsigned upload API, tags, context</td><td>Photos, video and audio tagged by place, category and festival, with caption and display name.</td></tr>
+    <tr><td><b>Shared map</b></td><td>Client-side resource list</td><td>Everyone's memories appear as pins, with no database.</td></tr>
+    <tr><td><b>AI auto-tagging</b></td><td>Auto-tagging add-on</td><td>Tags like "oil lamp" or "cattle" sort memories into Deepavali, Pongal or Margazhi.</td></tr>
+    <tr><td><b>Kolam postcards</b></td><td>Text layers, c_pad, a_, bo_</td><td>One upload becomes a bilingual postcard with a postmark and border.</td></tr>
+    <tr><td><b>Shared kolams</b></td><td>Upload with context metadata</td><td>Pattern data travels with the image so others see it on a doorstep.</td></tr>
+    <tr><td><b>Video</b></td><td>Video delivery</td><td>Auto format and quality, generated poster frames.</td></tr>
+    <tr><td><b>Share card</b></td><td>Crop, e_gradient_fade, text layers</td><td>The link preview image is a Cloudinary render with Tamil and English titles.</td></tr>
+    <tr><td><b>Fallback</b></td><td>Startup probe</td><td>If fetch is restricted, photos load from Wikimedia and nothing breaks.</td></tr>
+  </table>
+  <div class="note"><b>Lessons learned:</b> Hind Madurai renders Tamil correctly in text layers; commas and slashes in overlay text need double escaping (<code>%252C</code>); unsigned uploads need auto-tagging enabled on the preset itself.</div>
+</section>
+
+<!-- 20 TECH -->
+<section class="page">
+  <div class="kicker">Under the hood</div>
+  <h2>Tech stack and architecture</h2>
+  <table>
+    <tr><th>Layer</th><th>Tool</th><th>Role</th></tr>
+    <tr><td>3D</td><td>Three.js r169</td><td>Custom building shader, instancing, bloom, tilt-shift, rain pass. No downloaded models.</td></tr>
+    <tr><td>Animation</td><td>GSAP 3</td><td>Camera flights, festival changes, the film, lightning.</td></tr>
+    <tr><td>Build</td><td>Vite 5</td><td>Dev server and static build.</td></tr>
+    <tr><td>Map data</td><td>OpenStreetMap</td><td>Preprocessed to a ~450 KB JSON file.</td></tr>
+    <tr><td>Media</td><td>Cloudinary</td><td>Every image, upload, postcard and AI tag.</td></tr>
+    <tr><td>Photos</td><td>Wikimedia Commons</td><td>Openly licensed, credited in the app.</td></tr>
+    <tr><td>Sound</td><td>Web Audio API</td><td>City hum, bells, horns, rain and thunder, generated live.</td></tr>
+    <tr><td>Hosting</td><td>Cloudflare Pages</td><td>Static deploy on every push.</td></tr>
+    <tr><td>Testing</td><td>Playwright</td><td>Automated screenshots of every feature (including this guide).</td></tr>
+  </table>
+  <h3>Numbers</h3>
+  <table>
+    <tr><td>Buildings</td><td><b>2,449</b> mapped + ~1,000 labelled infill</td><td>Places with stories</td><td><b>20</b></td></tr>
+    <tr><td>Road segments</td><td><b>795</b></td><td>Walk-in scenes</td><td><b>4</b></td></tr>
+    <tr><td>Archive photos</td><td><b>80+</b></td><td>Kolam presets</td><td><b>13</b></td></tr>
+    <tr><td>Triangles on screen</td><td><b>~1.9 million</b></td><td>Backend servers</td><td><b>0</b></td></tr>
+  </table>
+  <h3>Code map</h3>
+  <p><code>src/world</code> city, landmarks, temple, metro, weather, festivals · <code>src/interior</code> walk-in scenes · <code>src/kolam</code> engine and studio · <code>src/media</code> Cloudinary and postcards · <code>src/content</code> stories · <code>src/ui</code> panels and film.</p>
+</section>
+
+<!-- 21 HONESTY -->
+<section class="page">
+  <div class="kicker">Honesty</div>
+  <h2>What's real and what isn't<span class="ta">உண்மையும் கற்பனையும்</span></h2>
+  <p class="lead">Cultural work should be honest about where it comes from. Every label in the app follows these rules.</p>
+  <table>
+    <tr><th style="width:22%">Category</th><th>What it covers</th></tr>
+    <tr><td><b>Real</b></td><td>Street layout, building footprints, railway, river, canal, temple tanks, metro tunnels and entrances, building, shop and street names (OpenStreetMap, November 2026).</td></tr>
+    <tr><td><b>Estimated</b></td><td>Building heights where OSM has none. Infill houses in unmapped blocks (labelled on hover).</td></tr>
+    <tr><td><b>Stylised</b></td><td>Every landmark. Each follows the real building's character, not its measurements.</td></tr>
+    <tr><td><b>Illustrative</b></td><td>The three family homes. Composites, badged in the app. No real family or address.</td></tr>
+    <tr><td><b>Left out on purpose</b></td><td>The deity in the sanctum. A proposed high-speed rail station. Unbuilt metro lines.</td></tr>
+    <tr><td><b>Generated</b></td><td>Sound is synthesised. "Traditional form" kolams use a traditional grid with a computer-found route; "Original design" means we drew it.</td></tr>
+    <tr><td><b>Privacy</b></td><td>Memories attach only to public places, never homes. The form asks people not to share addresses or faces without consent.</td></tr>
+  </table>
+  <figure><img src="shots/temple-inside-info.jpg" onerror="this.src='shots/inside-temple.jpg'"><figcaption>Every scene carries a badge: "Stylised reconstruction" or "Illustrative home, not a real family".</figcaption></figure>
+</section>
+
+<!-- 22 DEV -->
+<section class="page">
+  <div class="kicker">Developer</div>
+  <h2>About the developer</h2>
+  <div class="dev">
+    <img src="https://github.com/prodhosh.png">
+    <div>
+      <div style="font-family:Fraunces;font-size:18pt;font-weight:600">Prodhosh VS</div>
+      <p style="margin:1mm 0 2mm">Designed and built Namma Chennai, from the map pipeline and the 3D engine to the stories, the Kolam Studio and the Cloudinary integration.</p>
+      <p style="margin:0"><b>Portfolio</b> prodhosh.me &nbsp;·&nbsp; <b>LinkedIn</b> linkedin.com/in/prodhoshvs &nbsp;·&nbsp; <b>GitHub</b> github.com/prodhosh</p>
+    </div>
+  </div>
+  <h3 style="margin-top:10mm">Links</h3>
+  <table>
+    <tr><td style="width:30%"><b>Live site</b></td><td>https://chennai-diorama.pages.dev</td></tr>
+    <tr><td><b>Source code</b></td><td>https://github.com/PRODHOSH/chennai-diorama</td></tr>
+    <tr><td><b>For AI assistants</b></td><td>https://chennai-diorama.pages.dev/llms.txt</td></tr>
+  </table>
+  <h3>Credits</h3>
+  <p>Map data © OpenStreetMap contributors, under the Open Database License. Photographs from Wikimedia Commons, each credited where it appears. Fonts under the SIL Open Font License.</p>
+  <div style="text-align:center;margin-top:18mm">
+    <div style="font-family:'Hind Madurai';font-weight:600;font-size:20pt;color:var(--red)">யாதும் ஊரே யாவரும் கேளிர்</div>
+    <div style="color:var(--muted);font-size:10pt;margin-top:2mm">Every town is our town, everyone our kin.<br>Kaniyan Pungundranar, Purananuru 192</div>
+  </div>
+</section>
+
+</body>
+</html>

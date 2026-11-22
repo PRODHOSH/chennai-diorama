@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  📘 <a href="docs/Namma-Chennai-Guide.pdf"><b>Read the full project guide (PDF)</b></a>: every feature, its cultural meaning, and how Cloudinary powers it, with screenshots from the live site.
+</p>
+
+<p align="center">
   <img alt="Three.js" src="https://img.shields.io/badge/Three.js-r169-111?logo=threedotjs">
   <img alt="Cloudinary" src="https://img.shields.io/badge/Cloudinary-media%20pipeline-3448C5?logo=cloudinary&logoColor=white">
   <img alt="OpenStreetMap" src="https://img.shields.io/badge/OpenStreetMap-real%20data-7EBC6F?logo=openstreetmap&logoColor=white">
@@ -259,6 +263,8 @@ scripts/
   build-geo.mjs         OSM extract → public/data/city.json
   build-llms.mjs        stories → public/llms-full.txt (runs before every build)
   screenshots.mjs       Playwright capture for this README
+  doc-shots.mjs         Playwright capture of the live site for the PDF guide
+  build-guide.mjs       docs/guide/guide.html → docs/Namma-Chennai-Guide.pdf
 ```
 
 ---
