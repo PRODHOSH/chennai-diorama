@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "node init && vite --port 5173",
-    "build": "node init && node scripts/build-llms.mjs && vite build",
+    "dev": "vite --port 5173",
+    "build": "node scripts/build-llms.mjs && vite build",
     "llms": "node scripts/build-llms.mjs",
     "preview": "vite preview --port 4173",
     "screenshots": "node scripts/screenshots.mjs"
