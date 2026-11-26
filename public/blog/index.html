@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I built a tiny Chennai you can walk around in · Namma Chennai</title>
+<meta name="description" content="The story behind Namma Chennai: how I read a Cloudinary culture hackathon brief, picked kolams over a photo gallery, built a 3D miniature of central Chennai with Claude Code, and what Cloudinary actually does in it.">
+<meta name="author" content="Prodhosh VS">
+<meta name="theme-color" content="#1b2040">
+<link rel="canonical" href="https://chennai-diorama.pages.dev/blog/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chennai-diorama.pages.dev/blog/">
+<meta property="og:site_name" content="Namma Chennai">
+<meta property="og:title" content="How I built a tiny Chennai you can walk around in">
+<meta property="og:description" content="Kolams, a Cloudinary hackathon, and a lot of late nights with Claude Code. The full story behind Namma Chennai.">
+<meta property="og:image" content="https://chennai-diorama.pages.dev/blog/img/hero-golden.jpg">
+<meta property="article:author" content="Prodhosh VS">
+<meta property="article:published_time" content="2026-11-26">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I built a tiny Chennai you can walk around in">
+<meta name="twitter:image" content="https://chennai-diorama.pages.dev/blog/img/hero-golden.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How I built a tiny Chennai you can walk around in","datePublished":"2026-11-26","author":{"@type":"Person","name":"Prodhosh VS","url":"https://prodhosh.me"},"image":"https://chennai-diorama.pages.dev/blog/img/hero-golden.jpg","mainEntityOfPage":"https://chennai-diorama.pages.dev/blog/","inLanguage":"en"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Hind+Madurai:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2040'/%3E%3Cg fill='%23c9a24a'%3E%3Ccircle cx='22' cy='22' r='3'/%3E%3Ccircle cx='42' cy='22' r='3'/%3E%3Ccircle cx='22' cy='42' r='3'/%3E%3Ccircle cx='42' cy='42' r='3'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{--indigo:#1b2040;--ivory:#f4ecdf;--paper:#faf5ec;--gold:#c9a24a;--gold-l:#e2c47e;--terracotta:#b4553a;--ink:#23211f;--muted:#6a6459;--line:rgba(35,33,31,.14);
+--display:'Fraunces',Georgia,serif;--body:'Hind Madurai',system-ui,sans-serif;--tamil:'Noto Serif Tamil','Hind Madurai',serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--terracotta);text-underline-offset:3px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--terracotta));z-index:50}
+nav.top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,4vw,48px);font-size:15px}
+nav.top a{color:var(--ivory);text-decoration:none;font-weight:500;letter-spacing:.04em}
+nav.top .brand{font-family:var(--tamil);font-size:19px;color:var(--gold-l)}
+nav.top .pill{border:1px solid rgba(244,236,223,.4);padding:7px 16px;border-radius:99px;backdrop-filter:blur(6px);background:rgba(27,32,64,.35)}
+nav.top .pill:hover{background:var(--gold);color:var(--indigo);border-color:var(--gold)}
+header.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:var(--indigo) url(img/hero-golden.jpg) center/cover;color:var(--ivory)}
+header.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,51,.55) 0%,rgba(20,24,51,.1) 35%,rgba(20,24,51,.92) 100%)}
+.hero-in{position:relative;max-width:900px;margin:0 auto;width:100%;padding:0 24px 72px}
+.kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);font-weight:600}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(38px,6.4vw,70px);line-height:1.05;margin:14px 0 14px;letter-spacing:-.01em}
+.ta{font-family:var(--tamil);font-size:clamp(20px,3vw,28px);color:var(--gold-l);margin:0 0 26px}
+.by{display:flex;align-items:center;gap:14px;font-size:15px;color:#d9d2c4}
+.by img{width:46px;height:46px;border-radius:50%;border:2px solid var(--gold)}
+.by b{color:var(--ivory);display:block;font-weight:600}
+main{max-width:720px;margin:0 auto;padding:64px 24px 40px}
+main>p:first-of-type::first-letter{font-family:var(--display);font-weight:700;float:left;font-size:4.6em;line-height:.82;padding:8px 12px 0 0;color:var(--terracotta)}
+p{margin:0 0 1.35em}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4vw,38px);line-height:1.15;margin:2.1em 0 .6em;color:var(--indigo)}
+h2 small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:8px}
+h3{font-family:var(--display);font-size:22px;margin:1.6em 0 .3em;color:var(--indigo)}
+.rule{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3em 0}
+figure{margin:2.2em -90px;}
+figure img{width:100%;display:block;border-radius:14px;border:1px solid var(--line);box-shadow:0 22px 50px -24px rgba(27,32,64,.55)}
+figure.narrow{margin-left:0;margin-right:0}
+figure.phone{margin:2.2em auto;max-width:300px}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:12px;text-align:center;font-style:italic}
+blockquote{margin:2em 0;padding:6px 0 6px 26px;border-left:3px solid var(--gold);font-family:var(--display);font-style:italic;font-size:25px;line-height:1.4;color:var(--indigo)}
+.callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:18px 22px;margin:2em 0;font-size:17px}
+.callout b{color:var(--terracotta)}
+table{width:100%;border-collapse:collapse;font-size:16px;margin:1.6em 0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+th{background:var(--indigo);color:var(--ivory);text-align:left;padding:11px 14px;font-weight:600;font-size:14px;letter-spacing:.05em}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;line-height:1.5}
+td:first-child{font-weight:600;color:var(--indigo);white-space:nowrap}
+code{background:#efe6d3;padding:2px 7px;border-radius:5px;font-size:.85em}
+ul{padding-left:1.2em;margin:0 0 1.4em}li{margin-bottom:.5em}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 26px;margin:0 0 3em;font-size:16px}
+.toc b{font-family:var(--display);font-size:18px;color:var(--indigo)}
+.toc ol{margin:10px 0 0;padding-left:1.3em;columns:2;column-gap:30px}
+.toc a{text-decoration:none;color:var(--ink)}.toc a:hover{color:var(--terracotta)}
+.cta{margin:3em 0 0;background:var(--indigo);color:var(--ivory);border-radius:20px;padding:40px 34px;text-align:center;border:1px solid var(--gold);outline:1px solid rgba(201,162,74,.4);outline-offset:6px}
+.cta h2{color:var(--ivory);margin:0 0 .3em}.cta p{color:#d9d2c4;margin-bottom:1.4em}
+.btn{display:inline-block;margin:6px;padding:13px 26px;border-radius:99px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.gold{background:var(--gold);color:var(--indigo)}.btn.gold:hover{background:var(--gold-l)}
+.btn.line{border:1px solid rgba(244,236,223,.45);color:var(--ivory)}.btn.line:hover{border-color:var(--gold-l);color:var(--gold-l)}
+.author{display:flex;gap:20px;align-items:center;margin:3em 0 0;padding-top:2em;border-top:1px solid var(--line);font-size:16px}
+.author img{width:76px;height:76px;border-radius:50%;border:2px solid var(--gold)}
+.author p{margin:0}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50px}
+@media(max-width:960px){figure{margin-left:0;margin-right:0}}
+@media(max-width:640px){body{font-size:17.5px}.toc ol{columns:1}td:first-child{white-space:normal}blockquote{font-size:21px}.cta{padding:30px 20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav class="top"><a class="brand" href="/">நம்ம சென்னை</a><a class="pill" href="/">Open the city →</a></nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="kicker">Build story · Cloudinary culture hackathon</div>
+    <h1>How I built a tiny Chennai you can walk around in</h1>
+    <p class="ta">ஒரு குட்டி சென்னை</p>
+    <div class="by"><img src="img/prodhosh.png" alt="Prodhosh VS"><div><b>Prodhosh VS</b>26 November 2026 · 9 min read</div></div>
+  </div>
+</header>
+
+<main>
+<div class="toc"><b>In this story</b><ol>
+<li><a href="#brief">The brief</a></li><li><a href="#idea">Why not a photo gallery</a></li><li><a href="#kolam">The kolam problem</a></li>
+<li><a href="#claude">Building it with Claude Code</a></li><li><a href="#cloudinary">What Cloudinary does here</a></li><li><a href="#broke">What broke</a></li>
+<li><a href="#honest">Being honest about it</a></li><li><a href="#next">What I learned</a></li></ol></div>
+
+<p>Every morning in Chennai, somebody bends down outside their front door and draws a kolam in rice flour. It takes a few minutes. By evening it is scuffed by scooters and feet, and tomorrow they draw a new one. Nobody films it. Nobody saves it. That is the whole point, and it is also exactly why I could not stop thinking about it when I started this project.</p>
+
+<p>This is the story of Namma Chennai, a 3D miniature of central Chennai you can walk around in, built for the Cloudinary culture hackathon. It covers how I read the brief, the idea I threw away, how Claude Code and I actually split the work, and what Cloudinary really does in the thing. I will try to keep it honest, including the parts that went wrong.</p>
+
+<h2 id="brief"><small>Chapter one</small>The brief</h2>
+<p>The prompt was simple on paper. Build something that celebrates culture, and use Cloudinary in a way that matters. That is a wide open sentence, and wide open is dangerous. You can spend three days picking a topic and one day building it.</p>
+<p>So I did the boring thing first. I wrote down two lists. On the left, things I actually know about, because I live here. On the right, things Cloudinary is good at: delivering and transforming images, taking uploads straight from a browser, tagging, layering text on pictures. Then I looked for the overlap, and for something that did not already exist ten times over.</p>
+<p>Culture projects tend to land in one of two shapes. A gallery of old photos, or a list of festivals with nice colours. Both are fine. Neither makes you feel anything.</p>
+
+<figure><img src="img/overview.jpg" alt="Overview of the 3D miniature of central Chennai" loading="lazy"><figcaption>Where it ended up: central Chennai as a tilt-shift miniature, built from real map data.</figcaption></figure>
+
+<h2 id="idea"><small>Chapter two</small>Why not a photo gallery</h2>
+<p>My first idea really was a gallery. People upload photos of festivals, Cloudinary resizes them, done. It would have worked in a weekend. It would also have been forgettable, because a grid of thumbnails treats culture like a museum exhibit. Behind glass, finished, past tense.</p>
+<p>Chennai is not past tense. It is a city where the temple tank, the metro and the tea stall share one street, and where a festival changes how the whole neighbourhood looks for a week. I wanted a place, not a folder. Somewhere you could stand, look around, and notice that Deepavali morning feels different from Margazhi dawn.</p>
+<blockquote>I wanted a place, not a folder.</blockquote>
+<p>That decision made everything harder, and everything better. A place needs streets, and streets need to be roughly where they really are.</p>
+
+<h2 id="kolam"><small>Chapter three</small>The kolam problem</h2>
+<p>The thing that tied it together was the kolam. It is culture you do, not culture you look at. It is geometry, it is daily, it is temporary, and it is something almost every household in the city does without thinking of it as art.</p>
+<p>So the miniature needed a doorstep for every home, and a studio where you can draw one yourself. You pick a dot grid, you weave a line around the dots, and your pattern appears on a doorstep in the city. Pongal courtyard, Deepavali morning, Margazhi dawn, each with its own kolam style and its own light.</p>
+
+<figure><img src="img/studio-weave.jpg" alt="The kolam studio, weaving a pulli kolam around a dot grid" loading="lazy"><figcaption>The kolam studio. Dots first, then the line weaves around them, the way it is done on the ground.</figcaption></figure>
+
+<p>Here is where Cloudinary stopped being a checkbox for me. A kolam is temporary on the street, but a drawing on a screen can be kept. I could take a person's kolam, upload it once, and turn it into a postcard they can send to someone. A temporary thing, made permanent by choice. That felt like the right use of the tool, so I built toward it.</p>
+
+<div class="callout"><b>The rule I set early:</b> every feature has to answer the question "what does this teach someone about Chennai?" If the answer was nothing, it did not go in. It cut a lot of shiny ideas. It also kept the project from turning into a tech demo with a nice colour palette.</div>
+
+<h2 id="claude"><small>Chapter four</small>Building it with Claude Code</h2>
+<p>I built this with Claude Code, and I want to be straight about what that means, because the phrase gets thrown around loosely.</p>
+<p>I did not type one prompt and receive a city. It was a long conversation, a lot of it arguing. I decided what the project was, what was in and what was out, what a festival should feel like, and what was too much. Claude Code did a huge amount of the typing: wiring up Three.js, turning map data into buildings, writing the kolam weaving logic, setting up the Cloudinary calls. Then I looked at the result in the browser and said what was wrong. Roads too wide. Night too dark. Temple tower looks like a cake.</p>
+
+<figure><img src="img/streets.jpg" alt="Street level view of Park Town in the miniature" loading="lazy"><figcaption>Street level, Park Town. Every building footprint comes from OpenStreetMap, then gets its height and colour from tags and a few local rules.</figcaption></figure>
+
+<p>The loop that worked best was dull but effective. Describe the thing, let it build a version, open it, take a screenshot, point at what is off, repeat. When the app is a 3D scene, a screenshot says more than a paragraph. I also got it to drive a real browser to capture the views, which is how every picture in this post and in the project guide PDF was made, from the live site.</p>
+<p>What it did not do was decide what mattered. It will happily build whatever you ask. The taste, the Tamil text, the choice to show a clock tower and a temple and a tea shop instead of a generic skyline, those were mine to get right, and I spent real time on them.</p>
+
+<figure><img src="img/story-central.jpg" alt="The Chennai Central story panel with archive photo" loading="lazy"><figcaption>Tap a landmark and you get a short story and an archive photo, so the model is a doorway into the real thing.</figcaption></figure>
+
+<h3>The festivals</h3>
+<p>The city switches between Pongal, Deepavali, Margazhi and an everyday mode. Lights, kolam styles, colours and sounds all change. Deepavali has fireworks, which I turned down more than once because they started stealing attention from everything else.</p>
+
+<figure><img src="img/fest-deepavali.jpg" alt="Deepavali evening in the miniature with lamps and fireworks" loading="lazy"><figcaption>Deepavali mode. Lamps on every doorstep, and a sky that is allowed to show off a bit.</figcaption></figure>
+
+<figure><img src="img/inside-temple.jpg" alt="Inside the Dravidian temple scene" loading="lazy"><figcaption>You can step inside the temple, with its pillared hall and lamps, from the temple on the map.</figcaption></figure>
+
+<h2 id="cloudinary"><small>Chapter five</small>What Cloudinary does here</h2>
+<p>There is no backend in this project. No server, no database. The browser talks straight to Cloudinary using a cloud name and an unsigned upload preset, and that is all. I never put an API secret anywhere in the code, since anything shipped to a browser is public. Here is the actual list of jobs it does.</p>
+
+<table>
+<tr><th>What</th><th>How Cloudinary helps</th></tr>
+<tr><td>Archive photos</td><td>Original images are fetched through Cloudinary and resized for every spot they appear, from a small map pin to a full screen view, with automatic format and quality.</td></tr>
+<tr><td>Memories from visitors</td><td>People upload photos, video or audio with tags and captions. They show up as pins on the map next to the place they belong to.</td></tr>
+<tr><td>AI auto tagging</td><td>When a photo comes in, tags like oil lamp or cattle come back. The app uses them to file a memory under Deepavali or Pongal if the visitor did not choose one.</td></tr>
+<tr><td>Kolam postcards</td><td>One uploaded PNG becomes a full postcard using padding, Tamil and English text layers, a tilted postmark and a gold border. All of it is URL parameters.</td></tr>
+<tr><td>The share card</td><td>The preview image you see when the link is shared is a render of the city, faded and titled in Tamil and English, built entirely with a Cloudinary URL.</td></tr>
+</table>
+
+<figure class="narrow"><img src="img/postcard.jpg" alt="A kolam postcard generated by Cloudinary" loading="lazy"><figcaption>The postcard. One upload, and everything else on it, including the Tamil, is a transformation.</figcaption></figure>
+
+<p>The postcard is my favourite part, and it surprised me. I expected image delivery to be the main story. But building the postcard out of nothing except a URL, with no canvas code and no image library, made it click for me that Cloudinary is closer to a design tool you talk to through links than a place that stores pictures.</p>
+
+<h2 id="broke"><small>Chapter six</small>What broke</h2>
+<p>Plenty. A few that are worth admitting to:</p>
+<ul>
+<li><b>Cloudinary's fetch delivery is not always switched on.</b> Some accounts block it by default. So at startup the app checks whether it works, and if not, photos load straight from Wikimedia and nothing visibly breaks. I would rather the site be a little less fancy than show a wall of broken images.</li>
+<li><b>Live map data is slow and sometimes just fails.</b> The app can pull from OpenStreetMap at runtime, but production ships a baked offline copy so the city appears fast and does not depend on a public server staying up.</li>
+<li><b>My screenshots lied.</b> The first storm and street captures were washed out or mostly grey ground. Taking screenshots by script means you have to choose the camera on purpose, not just hit capture. I redid several.</li>
+<li><b>Mobile.</b> A 3D city on a phone is a negotiation. There is a quality setting, a reduced motion option, and fewer things moving by default.</li>
+</ul>
+
+<figure class="phone"><img src="img/m-city.jpg" alt="The city on a phone" loading="lazy"><figcaption>It runs on a phone. Not perfectly, but it runs.</figcaption></figure>
+
+<h2 id="honest"><small>Chapter seven</small>Being honest about it</h2>
+<p>This is a miniature, not a survey. Building heights are estimated, a few landmarks are modelled by hand, and some details are simplified. The project says so inside the app, on the About screen, and the guide lists what is real, what is approximated and what is illustrative. Culture is the one place I did not want to be sloppy with the truth, because people will read it as fact.</p>
+<p>If I got something wrong about your street, your temple or your festival, I genuinely want to hear it. The Share a Memory button exists for that reason too.</p>
+
+<figure><img src="img/story-thennow.jpg" alt="Then and now comparison of a Chennai landmark" loading="lazy"><figcaption>Then and Now. Old photographs next to the same place today.</figcaption></figure>
+
+<h2 id="next"><small>Chapter eight</small>What I learned</h2>
+<ul>
+<li><b>Pick the feeling first.</b> I knew I wanted people to feel the morning kolam energy. The tech followed from that, not the other way round.</li>
+<li><b>Use the sponsor's tool for the thing only it makes easy.</b> The postcard and share card are things I would not have attempted without Cloudinary's transformations.</li>
+<li><b>AI is a very fast pair of hands, not a taste.</b> You still have to know what good looks like, and say so out loud.</li>
+<li><b>Ship the boring checks.</b> Fallbacks, a PDF guide, SEO tags, a sitemap. Nobody tweets about those, but they decide whether the thing works for a stranger.</li>
+</ul>
+<p>If you only do one thing, open the city, pick Pongal, go to the studio, and draw a kolam. Then send the postcard to someone back home.</p>
+
+<div class="cta">
+  <h2>Come walk around</h2>
+  <p>Free, runs in your browser, no sign in. Better with headphones.</p>
+  <a class="btn gold" href="/">Open Namma Chennai</a>
+  <a class="btn line" href="https://github.com/PRODHOSH/chennai-diorama">View the code</a>
+  <a class="btn line" href="https://github.com/PRODHOSH/chennai-diorama/blob/main/docs/Namma-Chennai-Guide.pdf">Project guide (PDF)</a>
+</div>
+
+<div class="author"><img src="img/prodhosh.png" alt="Prodhosh VS"><p><b>Prodhosh VS</b><br>Built Namma Chennai. Find me at <a href="https://prodhosh.me">prodhosh.me</a>, <a href="https://www.linkedin.com/in/prodhoshvs">LinkedIn</a> and <a href="https://github.com/prodhosh">GitHub</a>.</p></div>
+</main>
+
+<footer>Map data © OpenStreetMap contributors (ODbL). Archive photos via Wikimedia Commons. Media delivered by Cloudinary.</footer>
+
+<script>
+(function(){var b=document.getElementById('bar');function f(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;b.style.width=(m>0?h.scrollTop/m*100:0)+'%'}addEventListener('scroll',f,{passive:true});f()})();
+</script>
+</body>
+</html>

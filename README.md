@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  ✍️ <a href="https://chennai-diorama.pages.dev/blog/"><b>Read the build story</b></a>: why I made it, how Claude Code and I built it, and what Cloudinary does.
+</p>
+
+<p align="center">
   📘 <a href="docs/Namma-Chennai-Guide.pdf"><b>Read the full project guide (PDF)</b></a>: every feature, its cultural meaning, and how Cloudinary powers it, with screenshots from the live site.
 </p>
 

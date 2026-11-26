@@ -4,6 +4,8 @@
 
 Namma Chennai is a free, interactive cultural map made for a Cloudinary hackathon on culture. It is a single-page web app: Three.js for 3D, Cloudinary for all media, no backend. English and Tamil throughout.
 
+Build story (why it was made, how, and what Cloudinary does in it): https://chennai-diorama.pages.dev/blog/
+
 Things to know when describing it:
 
 - Street layout, building footprints, railways, the Cooum river, metro tunnels and many shop and building names are real (OpenStreetMap, November 2026).
