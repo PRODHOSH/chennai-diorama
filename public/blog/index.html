@@ -80,7 +80,19 @@ ul{padding-left:1.2em;margin:0 0 1.4em}li{margin-bottom:.5em}
 .author img{width:76px;height:76px;border-radius:50%;border:2px solid var(--gold)}
 .author p{margin:0}
 footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50px}
-@media(max-width:960px){figure{margin-left:0;margin-right:0}}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;align-items:start}
+.side{position:sticky;top:28px;padding-top:64px}
+.side-h{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px}
+#sidenav a{display:block;padding:8px 0 8px 16px;border-left:2px solid var(--line);color:var(--muted);text-decoration:none;font-size:15px;line-height:1.35;transition:.2s}
+#sidenav a:hover{color:var(--indigo)}
+#sidenav a.on{color:var(--indigo);border-left-color:var(--terracotta);font-weight:600}
+main{max-width:none;margin:0;padding:64px 0 40px}
+figure,figure.narrow{margin:2.2em 0}
+figure.phone{max-width:260px}
+.toc{display:none}
+@media(max-width:960px){.wrap{display:block;max-width:720px}.side{display:none}.toc{display:block}}
+
 @media(max-width:640px){body{font-size:17.5px}.toc ol{columns:1}td:first-child{white-space:normal}blockquote{font-size:21px}.cta{padding:30px 20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -94,13 +106,15 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
     <div class="kicker">Build story · Cloudinary culture hackathon</div>
     <h1>How I built a tiny Chennai you can walk around in</h1>
     <p class="ta">ஒரு குட்டி சென்னை</p>
-    <div class="by"><img src="img/prodhosh.png" alt="Prodhosh VS"><div><b>Prodhosh VS</b>26 November 2026 · 9 min read</div></div>
+    <div class="by"><img src="img/prodhosh.png" alt="Prodhosh VS"><div><b>Prodhosh VS</b>26 November 2026 · 7 min read</div></div>
   </div>
 </header>
 
+<div class="wrap">
+<aside class="side"><div class="side-in"><span class="side-h">On this page</span><nav id="sidenav"></nav></div></aside>
 <main>
 <div class="toc"><b>In this story</b><ol>
-<li><a href="#brief">The brief</a></li><li><a href="#idea">Why not a photo gallery</a></li><li><a href="#kolam">The kolam problem</a></li>
+<li><a href="#brief">The brief</a></li><li><a href="#roots">Where this comes from</a></li><li><a href="#idea">Why not a photo gallery</a></li><li><a href="#kolam">The kolam problem</a></li>
 <li><a href="#claude">Building it with Claude Code</a></li><li><a href="#cloudinary">What Cloudinary does here</a></li><li><a href="#broke">What broke</a></li>
 <li><a href="#honest">Being honest about it</a></li><li><a href="#next">What I learned</a></li></ol></div>
 
@@ -115,13 +129,20 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <figure><img src="img/overview.jpg" alt="Overview of the 3D miniature of central Chennai" loading="lazy"><figcaption>Where it ended up: central Chennai as a tilt-shift miniature, built from real map data.</figcaption></figure>
 
-<h2 id="idea"><small>Chapter two</small>Why not a photo gallery</h2>
+<h2 id="roots"><small>Chapter two</small>Where this comes from</h2>
+<p>I should say the real reason first. I have always been pulled towards Tamil culture. Not in a loud way. It is more like background music you only notice when it stops. Tamil is one of the oldest languages still spoken every day, with writing that goes back more than two thousand years. People were composing poetry about love, war, rain and kings in Tamil long before most of the world's languages had a script.</p>
+<p>That history is not locked away in a museum here. It is on the bus. The Thirukkural, a book of couplets written about two thousand years ago, is printed in Chennai buses and read by kids who have no plans to become scholars. There is a line from the Sangam poet Kaniyan Pungundranar that I think about a lot: <em>yaadhum oore, yaavarum kelir</em>. Every town is my town, everyone is my kin. It is on the share card of this project for a reason. It is the most Chennai sentence I know.</p>
+<blockquote>Every town is my town, everyone is my kin.</blockquote>
+<p>Then there is the calendar. Pongal, when we thank the sun and the cattle for the harvest. Deepavali, with the early oil bath and the crackers before sunrise. Margazhi, when the whole city wakes up in the dark to sing Tiruppavai and hold music concerts at dawn. These are not events people attend. They are things the whole street does together, and you feel it in the air before anyone says a word.</p>
+<p>So when a hackathon asked for something about culture, I did not have to go looking. The harder question was how to show it without flattening it into slides and stock photos. I wanted someone who has never been to Chennai to get a small taste, and someone who grew up here to see their own street and smile.</p>
+
+<h2 id="idea"><small>Chapter three</small>Why not a photo gallery</h2>
 <p>My first idea really was a gallery. People upload photos of festivals, Cloudinary resizes them, done. It would have worked in a weekend. It would also have been forgettable, because a grid of thumbnails treats culture like a museum exhibit. Behind glass, finished, past tense.</p>
 <p>Chennai is not past tense. It is a city where the temple tank, the metro and the tea stall share one street, and where a festival changes how the whole neighbourhood looks for a week. I wanted a place, not a folder. Somewhere you could stand, look around, and notice that Deepavali morning feels different from Margazhi dawn.</p>
 <blockquote>I wanted a place, not a folder.</blockquote>
 <p>That decision made everything harder, and everything better. A place needs streets, and streets need to be roughly where they really are.</p>
 
-<h2 id="kolam"><small>Chapter three</small>The kolam problem</h2>
+<h2 id="kolam"><small>Chapter four</small>The kolam problem</h2>
 <p>The thing that tied it together was the kolam. It is culture you do, not culture you look at. It is geometry, it is daily, it is temporary, and it is something almost every household in the city does without thinking of it as art.</p>
 <p>So the miniature needed a doorstep for every home, and a studio where you can draw one yourself. You pick a dot grid, you weave a line around the dots, and your pattern appears on a doorstep in the city. Pongal courtyard, Deepavali morning, Margazhi dawn, each with its own kolam style and its own light.</p>
 
@@ -131,7 +152,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <div class="callout"><b>The rule I set early:</b> every feature has to answer the question "what does this teach someone about Chennai?" If the answer was nothing, it did not go in. It cut a lot of shiny ideas. It also kept the project from turning into a tech demo with a nice colour palette.</div>
 
-<h2 id="claude"><small>Chapter four</small>Building it with Claude Code</h2>
+<h2 id="claude"><small>Chapter five</small>Building it with Claude Code</h2>
 <p>I built this with Claude Code, and I want to be straight about what that means, because the phrase gets thrown around loosely.</p>
 <p>I did not type one prompt and receive a city. It was a long conversation, a lot of it arguing. I decided what the project was, what was in and what was out, what a festival should feel like, and what was too much. Claude Code did a huge amount of the typing: wiring up Three.js, turning map data into buildings, writing the kolam weaving logic, setting up the Cloudinary calls. Then I looked at the result in the browser and said what was wrong. Roads too wide. Night too dark. Temple tower looks like a cake.</p>
 
@@ -149,7 +170,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <figure><img src="img/inside-temple.jpg" alt="Inside the Dravidian temple scene" loading="lazy"><figcaption>You can step inside the temple, with its pillared hall and lamps, from the temple on the map.</figcaption></figure>
 
-<h2 id="cloudinary"><small>Chapter five</small>What Cloudinary does here</h2>
+<h2 id="cloudinary"><small>Chapter six</small>What Cloudinary does here</h2>
 <p>There is no backend in this project. No server, no database. The browser talks straight to Cloudinary using a cloud name and an unsigned upload preset, and that is all. I never put an API secret anywhere in the code, since anything shipped to a browser is public. Here is the actual list of jobs it does.</p>
 
 <table>
@@ -165,7 +186,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <p>The postcard is my favourite part, and it surprised me. I expected image delivery to be the main story. But building the postcard out of nothing except a URL, with no canvas code and no image library, made it click for me that Cloudinary is closer to a design tool you talk to through links than a place that stores pictures.</p>
 
-<h2 id="broke"><small>Chapter six</small>What broke</h2>
+<h2 id="broke"><small>Chapter seven</small>What broke</h2>
 <p>Plenty. A few that are worth admitting to:</p>
 <ul>
 <li><b>Cloudinary's fetch delivery is not always switched on.</b> Some accounts block it by default. So at startup the app checks whether it works, and if not, photos load straight from Wikimedia and nothing visibly breaks. I would rather the site be a little less fancy than show a wall of broken images.</li>
@@ -176,19 +197,20 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <figure class="phone"><img src="img/m-city.jpg" alt="The city on a phone" loading="lazy"><figcaption>It runs on a phone. Not perfectly, but it runs.</figcaption></figure>
 
-<h2 id="honest"><small>Chapter seven</small>Being honest about it</h2>
+<h2 id="honest"><small>Chapter eight</small>Being honest about it</h2>
 <p>This is a miniature, not a survey. Building heights are estimated, a few landmarks are modelled by hand, and some details are simplified. The project says so inside the app, on the About screen, and the guide lists what is real, what is approximated and what is illustrative. Culture is the one place I did not want to be sloppy with the truth, because people will read it as fact.</p>
 <p>If I got something wrong about your street, your temple or your festival, I genuinely want to hear it. The Share a Memory button exists for that reason too.</p>
 
 <figure><img src="img/story-thennow.jpg" alt="Then and now comparison of a Chennai landmark" loading="lazy"><figcaption>Then and Now. Old photographs next to the same place today.</figcaption></figure>
 
-<h2 id="next"><small>Chapter eight</small>What I learned</h2>
+<h2 id="next"><small>Chapter nine</small>What I learned</h2>
 <ul>
 <li><b>Pick the feeling first.</b> I knew I wanted people to feel the morning kolam energy. The tech followed from that, not the other way round.</li>
 <li><b>Use the sponsor's tool for the thing only it makes easy.</b> The postcard and share card are things I would not have attempted without Cloudinary's transformations.</li>
 <li><b>AI is a very fast pair of hands, not a taste.</b> You still have to know what good looks like, and say so out loud.</li>
 <li><b>Ship the boring checks.</b> Fallbacks, a PDF guide, SEO tags, a sitemap. Nobody tweets about those, but they decide whether the thing works for a stranger.</li>
 </ul>
+<p>Here is what I hope. I hope someone far from home opens this, spots the clock tower at Central, and feels a small tug. I hope a kid in Chennai draws a kolam in the studio and shows it to their grandmother. And I hope anyone who has never heard of Pongal goes and looks it up afterwards. Tamil culture has been telling its story for a very long time. This is just my small, pixelated way of saying thank you for it.</p>
 <p>If you only do one thing, open the city, pick Pongal, go to the studio, and draw a kolam. Then send the postcard to someone back home.</p>
 
 <div class="cta">
@@ -201,11 +223,16 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 50p
 
 <div class="author"><img src="img/prodhosh.png" alt="Prodhosh VS"><p><b>Prodhosh VS</b><br>Built Namma Chennai. Find me at <a href="https://prodhosh.me">prodhosh.me</a>, <a href="https://www.linkedin.com/in/prodhoshvs">LinkedIn</a> and <a href="https://github.com/prodhosh">GitHub</a>.</p></div>
 </main>
+</div>
 
 <footer>Map data © OpenStreetMap contributors (ODbL). Archive photos via Wikimedia Commons. Media delivered by Cloudinary.</footer>
 
 <script>
 (function(){var b=document.getElementById('bar');function f(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;b.style.width=(m>0?h.scrollTop/m*100:0)+'%'}addEventListener('scroll',f,{passive:true});f()})();
+(function(){var hs=[].slice.call(document.querySelectorAll('main h2[id]')),nav=document.getElementById('sidenav');
+hs.forEach(function(h){var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.childNodes[h.childNodes.length-1].textContent;nav.appendChild(a)});
+var links=nav.querySelectorAll('a');function on(){var cur=0;hs.forEach(function(h,i){if(h.getBoundingClientRect().top<180)cur=i});links.forEach(function(l,i){l.classList.toggle('on',i===cur)})}
+addEventListener('scroll',on,{passive:true});on()})();
 </script>
 </body>
 </html>
